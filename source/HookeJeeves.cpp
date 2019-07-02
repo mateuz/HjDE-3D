@@ -4,14 +4,16 @@
 //   - uint: number of Dimensions
 //   - double: rho
 //   - double: epsilon
-HookeJeeves::HookeJeeves(uint _nd, double _rho, double _e){
+HookeJeeves::HookeJeeves(uint _nd, uint _pl, double _rho, double _e){
   nvars   = _nd;
+  PL      = _pl;
   rho     = _rho;
   epsilon = _e;
 
-  // printf(" | Number of Dimensions:        %d\n", nvars);
-  // printf(" | Rho:                         %.3lf\n", rho);
-  // printf(" | Epsilon                      %.3lf\n", epsilon);
+  printf(" | Number of Dimensions:        %d\n", nvars);
+  printf(" | Protein Length:              %d\n", PL);
+  printf(" | Rho:                         %.3lf\n", rho);
+  printf(" | Epsilon                      %.3lf\n", epsilon);
 
   startpt = new double[nvars];
   delta   = new double[nvars];
@@ -19,24 +21,25 @@ HookeJeeves::HookeJeeves(uint _nd, double _rho, double _e){
   xbef    = new double[nvars];
   z       = new double[nvars];
 
-  amino_pos = new amino[nvars];
   memset(delta, 0, sizeof(double) * nvars);
 
-  if( nvars == 13 ){
+  points.reserve(PL);
+
+  if( PL == 13 ){
     AB_SQ = "ABBABBABABBAB";
-  } else if( nvars == 21 ){
+  } else if( PL == 21 ){
     AB_SQ = "BABABBABABBABBABABBAB";
-  } else if( nvars == 34 ){
+  } else if( PL == 34 ){
     AB_SQ = "ABBABBABABBABBABABBABABBABBABABBAB";
-  } else if( nvars == 38 ){
+  } else if( PL == 38 ){
     AB_SQ = "AAAABABABABABAABAABBAAABBABAABBBABABAB";
-  } else if( nvars == 55 ){
+  } else if( PL == 55 ){
     AB_SQ = "BABABBABABBABBABABBABABBABBABABBABBABABBABABBABBABABBAB";
-  } else if( nvars == 64 ){
+  } else if( PL == 64 ){
     AB_SQ = "ABBABAABBABABBBAABBABABBBABBABABBABABBABABABAABABBAABBABBBAAABAB";
-  } else if( nvars == 98 ){
+  } else if( PL == 98 ){
     AB_SQ = "AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA";
-  } else if( nvars == 120 ){
+  } else if( PL == 120 ){
     AB_SQ = "ABBABBAABABABAABBAAAABAABABBABABBAAABBBAABBBABAAABABBABBABBBBABBBBAABBBBBBBABABBAAAABBBBBBABBBBAAAABBBABABBBBAAAABBABABB";
   } else {
     std::cout << "Error, AB string string sequence only defined to 13, 21, 34, 38, 55, 64, 98, and 120.\n";
@@ -47,51 +50,77 @@ HookeJeeves::HookeJeeves(uint _nd, double _rho, double _e){
 HookeJeeves::~HookeJeeves(){
   delete [] startpt;
   delete [] delta;
-  delete [] amino_pos;
   delete [] newx;
   delete [] xbef;
 }
 
-double HookeJeeves::evaluate(const double * gen){
-  int i, j;
-  double d_x, d_y, v1, v2, C, D;
+double HookeJeeves::evaluate(double * S){
+  points.clear();
 
-  amino_pos[0].x = 0.0;
-  amino_pos[0].y = 0.0;
-  amino_pos[1].x = 1.0;
-  amino_pos[1].y = 0.0;
+	points.push_back( std::make_tuple(0.0, 0.0, 0.0) ); // [0]
+	points.push_back( std::make_tuple(0.0, 1.0, 0.0) ); // [1]
+  points.push_back( std::make_tuple(cos(S[0]), 1.0 + sin(S[0]), 0.0) ); // [2]
 
-  for( i = 1; i < (nvars - 1); i++ ){
-    d_x = amino_pos[i].x - amino_pos[i-1].x;
-    d_y = amino_pos[i].y - amino_pos[i-1].y;
+	double _x, _y, _z;
+	_x = std::get<0>(points[2]);
+	_y = std::get<1>(points[2]);
+	_z = std::get<2>(points[2]);
 
-    amino_pos[i+1].x = amino_pos[i].x + d_x * cos( gen[i - 1]) - d_y * sin( gen[i - 1] );
-    amino_pos[i+1].y = amino_pos[i].y + d_y * cos( gen[i - 1]) + d_x * sin( gen[i - 1] );
-  }
+	double * theta = &S[0];
+	double * beta  = &S[PL-2];
 
-  v1 = v2 = 0.0;
+	for( uint16_t i = 3; i < PL; i++ ){
+		_x += cos(theta[i-2])*cos(beta[i-3]);
+		_y += sin(theta[i-2])*cos(beta[i-3]);
+		_z += sin(beta[i-3]);
 
-  for( i = 0; i < (nvars - 2); i++ ){
-    v1 += (1.0 - cos(gen[i])) / 4.0;
+		points.push_back(std::make_tuple(_x, _y, _z));
+	}
 
-    for( j = (i+2); j < nvars; j++ ){
+	// printf("Pontos: \n");
+	// for( uint16_t i = 0; i < PL; i++ ){
+	// 	printf("%.3f %.3f %.3f\n", std::get<0>(points[i]), std::get<1>(points[i]), std::get<2>(points[i]));
+	// }
 
-      if( AB_SQ[i] == 'A' && AB_SQ[j] == 'A' )
-        C = 1;
-      else if( AB_SQ[i] == 'B' && AB_SQ[j] == 'B' )
-        C = 0.50;
-      else
-        C = -0.50;
+	double v1 = 0.0, v2 = 0.0;
+	double xi, xj, yi, yj, zi, zj, dx, dy, dz, D;
+	double c_ab;
+	for( uint16_t i = 0; i < PL-2; i++ ){
+		v1 += 1 - cos(theta[i]);
+		for( uint16_t j = i + 2; j < PL; j++ ){
+			if (AB_SQ[i] == 'A' && AB_SQ[j] == 'A') //AA bond
+				c_ab = 1;
+			else if (AB_SQ[i] == 'B' && AB_SQ[j] == 'B') //BB bond
+				c_ab = 0.5;
+			else
+				c_ab = -0.5; //AB or BA bond
 
-      d_x = amino_pos[i].x - amino_pos[j].x;
-      d_y = amino_pos[i].y - amino_pos[j].y;
+			xi = std::get<0>(points[i]);
+			xj = std::get<0>(points[j]);
 
-      D = sqrt( (d_x * d_x) + (d_y * d_y) );
-      v2 += 4.0 * ( 1.0/pow(D, 12.0) - C/pow(D, 6.0) );
-    }
+			yi = std::get<1>(points[i]);
+			yj = std::get<1>(points[j]);
 
-  }
-  return v1 + v2;
+			zi = std::get<2>(points[i]);
+			zj = std::get<2>(points[j]);
+
+			dx = (xi - xj);
+			dx *= dx;
+
+			dy = (yi - yj);
+			dy *= dy;
+
+			dz = (zi - zj);
+			dz *= dz;
+
+			D = sqrt(dx + dy + dz);
+
+			v2 += ( 1 / pow(D, 12) - c_ab / pow(D, 6) );
+		}
+	}
+	// printf("v1: %.4lf v2: %.4lf\n", v1/4, 4*v2);
+	// printf("Final energy value: %.8lf\n", v1/4 + 4*v2);
+	return(v1/4 + 4*v2);
 }
 
 double HookeJeeves::best_nearby(double * point, double prevbest, uint * eval){
@@ -159,7 +188,10 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
   double fnew;
   double tmp;
 
+
   fbef = evaluate(newx);
+
+  //printf("Entrou com: %.10lf\n", fbef);
 
   fnew = fbef;
 
@@ -223,5 +255,6 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
   for( uint i = 0; i < nvars; i++ )
     _startpt[i] = xbef[i];
 
+  //printf("Saiu com: %.10lf\n", fbef);
   return fbef;
 }

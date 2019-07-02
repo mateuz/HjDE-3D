@@ -13,19 +13,20 @@
 #include <chrono>
 #include <cstring>
 
-typedef struct {
-	double x;
-	double y;
-} amino;
+typedef std::vector< std::tuple<double, double, double> > Points;
 
 #define PI 3.1415926535897932384626433832795029
 
 class HookeJeeves
 {
-public:
-
+private:
   // this is the number of dimensions
   uint nvars;
+
+  // this is the protein size
+  uint PL;
+
+  Points points;
 
   // this is the user-supplied guess at the minimum
   double * startpt;
@@ -58,20 +59,22 @@ public:
   // uses >= itermax iterations, halt.
   uint itermax;
 
-  amino * amino_pos;
-
   std::string AB_SQ;
+
+public:
 
   // Parameters received:
   //   - uint: number of Dimensions
+  //   - uint: protein length
   //   - double: rho
   //   - double: epsilon
-	HookeJeeves(uint, double, double);
+  //
+	HookeJeeves(uint, uint, double, double);
 	~HookeJeeves();
 
   double best_nearby(double *, double , uint * );
   double optimize(const uint, double *);
-  double evaluate(const double *);
+  double evaluate(double *);
 };
 
 #endif
