@@ -28,9 +28,28 @@ $ "max_eval, e"  - Number of Function Evaluations
 $ "help, h"      - Show this help
 ```
 
-##### Proteins Tested and Results
+##### Proteins Added
 
-- Empty list for a while
+| PDB ID | PSL |  D  | AB Sequence                                                                                       |
+|:------:|:---:|:---:|---------------------------------------------------------------------------------------------------|
+|  1BXP  |  13 |  21 | ABBBBBBABBBAB                                                                                     |
+|  1CB3  |  13 |  21 | BABBBAABBAAAB                                                                                     |
+|  1BXL  |  16 |  27 | ABAABBAAAAABBABB                                                                                  |
+|  1EDP  |  17 |  29 | ABABBAABBBAABBABA                                                                                 |
+|  2ZNF  |  18 |  31 | ABABBAABBABAABBABA                                                                                |
+|  1EDN  |  21 |  37 | ABABBAABBBAABBABABAAB                                                                             |
+|  2H3S  |  25 |  45 | AABBAABBBBBABBBABAABBBBBB                                                                         |
+|  1ARE  |  29 |  53 | BBBAABAABBABABBBAABBBBBBBBBBB                                                                     |
+|  2KGU  |  34 |  63 | ABAABBAABABBABAABAABABABABABAAABBB                                                                |
+|  1TZ4  |  37 |  69 | BABBABBAABBAAABBAABBAABABBBABAABBBBBB                                                             |
+|  1TZ5  |  37 |  69 | AAABAABAABBABABBAABBBBAABBBABAABBABBB                                                             |
+|  1AGT  |  38 |  71 | AAAABABABABABAABAABBAAABBABAABBBABABAB                                                            |
+|  1CRN  |  46 |  87 | BBAAABAAABBBBBAABAAABABAAAABBBAAAAAAAABAAABBAB                                                    |
+|  2KAP  |  60 | 115 | BBAABBABABABABBABABBBBABAABABAABBBBBBABBBAABAAABBABBABBAAAAB                                      |
+|  1HVV  |  75 | 145 | BAABBABBBBBBAABABBBABBABBABABAAAAABBBABAABBABBBABBAABBABBAABBBBBAABBBBBABBB                       |
+|  1GK4  |  84 | 163 | ABABAABABBBBABBBABBABBBBAABAABBBBBAABABBBABBABBBAABBABBBBBAABABAAABABAABBBBAABABBBBA              |
+|  1PCH  |  88 | 171 | ABBBAAABBBAAABABAABAAABBABBBBBABAAABBBBABABBAABAAAAAABBABBABABABABBABBAABAABBBAABBAAABA           |
+|  2EWH  |  98 | 191 | AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA |
 
 ##### Execute
 

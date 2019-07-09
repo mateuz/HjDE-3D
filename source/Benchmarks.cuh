@@ -1,6 +1,9 @@
 #ifndef _BENCHMARKS_H
 #define _BENCHMARKS_H
 
+#include <string>
+#include <map>
+
 class Benchmarks
 {
 protected:
@@ -14,6 +17,9 @@ protected:
 
   dim3 NT;
   dim3 NB;
+
+  std::map< std::string, std::string> protein_sequences;
+
 public:
 
   Benchmarks();
@@ -37,6 +43,10 @@ public:
 
   uint getThreads();
   uint getBlocks();
+
+  void showSequences(void);
+
+  size_t findSequence( std::string );
 };
 
 #endif

@@ -8,9 +8,13 @@
 #include "3D_AB.cuh"
 #include "HookeJeeves.hpp"
 
+#define PI 3.1415926535897932384626433832795029
+
 int main(int argc, char * argv[]){
   srand(time(NULL));
   uint n_runs, NP, n_evals, PL;
+
+  std::string PROTEIN;
 
   try {
     po::options_description config("Opções");
@@ -18,6 +22,7 @@ int main(int argc, char * argv[]){
       ("runs,r"    , po::value<uint>(&n_runs)->default_value(1)    , "Number of Executions" )
       ("pop_size,p", po::value<uint>(&NP)->default_value(20)       , "Population Size"      )
       ("protein_lenght,d", po::value<uint>(&PL)->default_value(13) , "Protein Length"       )
+      ("protein,o", po::value<std::string>(&PROTEIN)->default_value("1BXP"), "PDB ID"       )
       ("max_eval,e", po::value<uint>(&n_evals)->default_value(10e5), "Number of Function Evaluations")
       ("help,h", "Show help");
 
@@ -34,6 +39,8 @@ int main(int argc, char * argv[]){
     std::cout << e.what() << "\n";
     return 1;
   }
+
+
 
   uint n_dim = (2 * PL) - 5;
 
@@ -79,6 +86,14 @@ int main(int argc, char * argv[]){
   if( B == NULL ){
     printf("Unknown function! Exiting...\n");
     exit(EXIT_FAILURE);
+  }
+
+  std::cout << "Entrou com: " << PROTEIN << std::endl;
+  size_t ret = B->findSequence(PROTEIN);
+  if( ret == 0 ){
+    std::cout << "SEQUENCIA NAO ENCONTRADA" << std::endl;
+  } else {
+    std::cout << "SEQUENCIA ENCONTRADA COM TAMANHO " << ret << std::endl;
   }
 
   float x_min = B->getMin();
@@ -141,36 +156,41 @@ int main(int argc, char * argv[]){
 
       jde->update();
 
-      if( g%1000 == 0 && g != 0 ){
-        int b_idx = random_i(rng);
-        // thrust::host_vector<float> H(d_og.begin() + (n_dim * b_idx), d_og.begin() + (n_dim * b_idx) + n_dim);
-        thrust::host_vector<double> H(n_dim);
-
-        //device to host
-        for( int d = 0; d < n_dim; d++ ){
-          H[d] = static_cast<double>(d_og[(b_idx * n_dim) + d]);
-          // printf("teste[%d] = %.15f;\n", d, (double)d_og[(b_idx * n_dim) + d]);
-        }
-
-        // printf("Entring hooke jeeves with %.10lf\n", (float)d_fog[b_idx]);
-        d_fog[b_idx] = static_cast<float>(hj->optimize(10000, H.data()));
-
-        //host to device
-        for( int d = 0; d < n_dim; d++ ){
-          d_og[(b_idx*n_dim) + d] = static_cast<float>(H[d]);
-        }
-      }
+      // if( g%1000 == 0 && g != 0 ){
+      //   int b_idx = random_i(rng);
+      //   // thrust::host_vector<float> H(d_og.begin() + (n_dim * b_idx), d_og.begin() + (n_dim * b_idx) + n_dim);
+      //   thrust::host_vector<double> H(n_dim);
+      //
+      //   //device to host
+      //   for( int d = 0; d < n_dim; d++ ){
+      //     H[d] = static_cast<double>(d_og[(b_idx * n_dim) + d]);
+      //     // printf("teste[%d] = %.15f;\n", d, (double)d_og[(b_idx * n_dim) + d]);
+      //   }
+      //
+      //   // printf("Entring hooke jeeves with %.10lf\n", (float)d_fog[b_idx]);
+      //   d_fog[b_idx] = static_cast<float>(hj->optimize(10000, H.data()));
+      //
+      //   //host to device
+      //   for( int d = 0; d < n_dim; d++ ){
+      //     d_og[(b_idx*n_dim) + d] = static_cast<float>(H[d]);
+      //   }
+      // }
     }
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&time, start, stop);
-
     /* End a Run */
-    // it = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+
+    it = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
     // int d = thrust::distance(d_fog.begin(), it);
 
     float * iter = thrust::min_element(thrust::device, p_fog, p_fog + NP);
     int position = iter - p_fog;
+
+    printf(" +==============================================================+ \n");
+    // printf(" | Exploration phase finished.\n");
+    printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it));
+    // printf(" +==============================================================+ \n");
 
     thrust::host_vector<double> H(n_dim);
 
@@ -184,12 +204,12 @@ int main(int argc, char * argv[]){
     // // printf("\n");
     double tini, tend;
     tini = stime();
-    hjres = hj->optimize(5000000, H.data());
+    hjres = hj->optimize(10000000, H.data());
     tend = stime();
 
-    printf(" | Conformation: \n | ");
+    printf(" | %-2d -- Conformation \n | ", run);
     for( int nd = 0; nd < n_dim; nd++ ){
-      printf("%.30lf ", H[nd]);
+      printf("%.30lf, ", (H[nd] * 180.0) / PI );
       // printf("teste[%d] = %.30lf;\n", nd, H[nd]);
     }
     printf("\n");

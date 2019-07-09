@@ -251,6 +251,7 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
     }
   }
 
+  printf(" | HJ uses %d / %d iterations.\n", it, n_evals );
   // copy the improved result to startpt
   for( uint i = 0; i < nvars; i++ )
     _startpt[i] = xbef[i];
