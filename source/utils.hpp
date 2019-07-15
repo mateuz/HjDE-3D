@@ -24,7 +24,6 @@
 namespace po = boost::program_options;
 
 double stime();
-
-void show_params(uint, uint, uint, uint, uint);
+void show_params( uint, uint, uint, uint, uint, std::string, std::string);
 
 #endif

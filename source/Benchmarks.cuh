@@ -47,6 +47,8 @@ public:
   void showSequences(void);
 
   size_t findSequence( std::string );
+
+  std::string getSequence( std::string );
 };
 
 #endif

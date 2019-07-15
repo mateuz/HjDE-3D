@@ -4,14 +4,16 @@
 //   - uint: number of Dimensions
 //   - double: rho
 //   - double: epsilon
-HookeJeeves::HookeJeeves(uint _nd, uint _pl, double _rho, double _e){
+HookeJeeves::HookeJeeves(uint _nd, uint _pl, std::string _seq, double _rho, double _e){
   nvars   = _nd;
   PL      = _pl;
   rho     = _rho;
   epsilon = _e;
+  AB_SQ = _seq;
 
   printf(" | Number of Dimensions:        %d\n", nvars);
   printf(" | Protein Length:              %d\n", PL);
+  printf(" | Protein Seq:                 %s\n", AB_SQ.c_str());
   printf(" | Rho:                         %.3lf\n", rho);
   printf(" | Epsilon                      %.3lf\n", epsilon);
 
@@ -24,27 +26,6 @@ HookeJeeves::HookeJeeves(uint _nd, uint _pl, double _rho, double _e){
   memset(delta, 0, sizeof(double) * nvars);
 
   points.reserve(PL);
-
-  if( PL == 13 ){
-    AB_SQ = "ABBABBABABBAB";
-  } else if( PL == 21 ){
-    AB_SQ = "BABABBABABBABBABABBAB";
-  } else if( PL == 34 ){
-    AB_SQ = "ABBABBABABBABBABABBABABBABBABABBAB";
-  } else if( PL == 38 ){
-    AB_SQ = "AAAABABABABABAABAABBAAABBABAABBBABABAB";
-  } else if( PL == 55 ){
-    AB_SQ = "BABABBABABBABBABABBABABBABBABABBABBABABBABABBABBABABBAB";
-  } else if( PL == 64 ){
-    AB_SQ = "ABBABAABBABABBBAABBABABBBABBABABBABABBABABABAABABBAABBABBBAAABAB";
-  } else if( PL == 98 ){
-    AB_SQ = "AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA";
-  } else if( PL == 120 ){
-    AB_SQ = "ABBABBAABABABAABBAAAABAABABBABABBAAABBBAABBBABAAABABBABBABBBBABBBBAABBBBBBBABABBAAAABBBBBBABBBBAAAABBBABABBBBAAAABBABABB";
-  } else {
-    std::cout << "Error, AB string string sequence only defined to 13, 21, 34, 38, 55, 64, 98, and 120.\n";
-    exit(-1);
-  }
 }
 
 HookeJeeves::~HookeJeeves(){

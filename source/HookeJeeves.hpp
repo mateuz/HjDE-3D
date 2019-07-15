@@ -69,7 +69,7 @@ public:
   //   - double: rho
   //   - double: epsilon
   //
-	HookeJeeves(uint, uint, double, double);
+	HookeJeeves(uint, uint, std::string, double, double);
 	~HookeJeeves();
 
   double best_nearby(double *, double , uint * );

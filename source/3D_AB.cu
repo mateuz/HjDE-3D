@@ -5,22 +5,24 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
+#include <cstdlib>
 
-F3DAB::F3DAB( uint _dim, uint _ps, uint _pl ):Benchmarks()
+F3DAB::F3DAB( uint _ps, std::string _seq ):Benchmarks()
 {
-  //dimensions to opt
-  n_dim = _dim;
 
-  //protein Length
-  protein_length = _pl;
+  size_t protein_length = findSequence(_seq);
+  if( protein_length == 0 ){
+    std::cout << "Protein sequence not found on 3D_AB.cu at line 15." << std::endl;
+    exit(EXIT_FAILURE);
+  }
 
-  //number of individuals
+  // number of individuals
   ps = _ps;
 
   min = -3.1415926535897932384626433832795029;
   max = +3.1415926535897932384626433832795029;
 
-  ID = 1002;
+  ID = 1001;
 
   // get the next multiple of 32;
   NT.x = 32 * ceil((double) protein_length / 32.0);
@@ -32,27 +34,9 @@ F3DAB::F3DAB( uint _dim, uint _ps, uint _pl ):Benchmarks()
 
   char s_2dab[150];
   memset(s_2dab, 0, sizeof(char) * 150);
+  strcpy(s_2dab, getSequence(_seq).c_str());
 
-  if( protein_length == 13 ){
-    strcpy(s_2dab, "ABBABBABABBAB");
-  } else if( protein_length == 21 ){
-    strcpy(s_2dab, "BABABBABABBABBABABBAB");
-  } else if( protein_length == 34 ){
-    strcpy(s_2dab, "ABBABBABABBABBABABBABABBABBABABBAB");
-  } else if( protein_length == 38 ){
-    strcpy(s_2dab, "AAAABABABABABAABAABBAAABBABAABBBABABAB");
-  } else if( protein_length == 55 ){
-    strcpy(s_2dab, "BABABBABABBABBABABBABABBABBABABBABBABABBABABBABBABABBAB");
-  } else if( protein_length == 64 ){
-    strcpy(s_2dab, "ABBABAABBABABBBAABBABABBBABBABABBABABBABABABAABABBAABBABBBAAABAB");
-  } else if( protein_length == 98 ){
-    strcpy(s_2dab, "AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA");
-  } else if( protein_length == 120 ){
-    strcpy(s_2dab, "ABBABBAABABABAABBAAAABAABABBABABBAAABBBAABBBABAAABABBABBABBBBABBBBAABBBBBBBABABBAAAABBBBBBABBBBAAAABBBABABBBBAAAABBABABB");
-  } else {
-    std::cout << "error string size must be 13, 21, 34, 38, 55, 64, 98, and 120.\n";
-    exit(-1);
-  }
+  printf("Optimizing sequence: %s\n", s_2dab);
 
   checkCudaErrors(cudaMemcpyToSymbol(S_AB, (void *) s_2dab, 150 * sizeof(char)));
   checkCudaErrors(cudaMemcpyToSymbol(PL, &protein_length, sizeof(int)));
@@ -65,14 +49,14 @@ F3DAB::~F3DAB()
 
 inline __host__ __device__ float3 operator-(float3 a, float3 b)
 {
-    return make_float3(a.x - b.x, a.y - b.y, a.z - b.z);
+  return make_float3(a.x - b.x, a.y - b.y, a.z - b.z);
 }
 
 __global__ void computeK_3DAB_P(float * x, float * f){
   uint id_p = blockIdx.x;
   uint id_d = threadIdx.x;
   uint ndim = params.n_dim;
-  int N    = PL;
+  int N     = PL;
 
   uint THETA = id_p * ndim;
   uint BETA  = id_p * ndim + (N-2);

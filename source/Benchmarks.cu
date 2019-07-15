@@ -23,8 +23,8 @@ Benchmarks::Benchmarks()
   protein_sequences["2KAP"] = "BBAABBABABABABBABABBBBABAABABAABBBBBBABBBAABAAABBABBABBAAAAB";
   protein_sequences["1HVV"] = "BAABBABBBBBBAABABBBABBABBABABAAAAABBBABAABBABBBABBAABBABBAABBBBBAABBBBBABBB";
   protein_sequences["1GK4"] = "ABABAABABBBBABBBABBABBBBAABAABBBBBAABABBBABBABBBAABBABBBBBAABABAAABABAABBBBAABABBBBA";
-  protein_sequences["1PCH"] = "ABBBAAABBBAAABABAABAAABBABBBBBABAAABBBBABABBAABAAAAAABBABBABABABABBABBAABAABBBAABBAAABA";
-  protein_sequences["2EWH"] = "AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA";
+  protein_sequences["1PCH"] = "ABBBAAABBBAAABABAABAAABBABBBBBBABAAABBBBABABBAABAAAAAABBABBABABABABBABBAABAABBBAABBAAABA";
+  protein_sequences["2EWH"] = "AABABAAAAAAABBBAAAAAABAABAABBAABABAAABBBAAAABABAAABABBAAABAAABAAABAABBAABAAAAABAAABABBBABBAAABAABA";
 }
 
 Benchmarks::~Benchmarks()
@@ -76,7 +76,7 @@ void Benchmarks::showSequences(){
 
   std::map<std::string,std::string>::iterator it;
   for( it = protein_sequences.begin(); it!=protein_sequences.end(); ++it )
-    printf("%s | %s\n", it->first.c_str(), it->second.c_str());
+    printf(" | %s | %zu | %s\n", it->first.c_str(), it->second.size(),  it->second.c_str());
 
   printf(" +==============================================================+ \n");
 }
@@ -89,4 +89,14 @@ size_t Benchmarks::findSequence( std::string _w ){
     return it->second.size();
 
   return 0;
+}
+
+std::string Benchmarks::getSequence( std::string _w ){
+  std::map<std::string, std::string>::iterator it;
+
+  it = protein_sequences.find(_w);
+  if(it != protein_sequences.end())
+    return it->second;
+
+  return "";
 }

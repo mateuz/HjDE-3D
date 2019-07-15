@@ -12,17 +12,16 @@
 
 int main(int argc, char * argv[]){
   srand(time(NULL));
-  uint n_runs, NP, n_evals, PL;
+  uint n_runs, NP, n_evals;
 
-  std::string PROTEIN;
+  std::string PDB;
 
   try {
     po::options_description config("Opções");
     config.add_options()
       ("runs,r"    , po::value<uint>(&n_runs)->default_value(1)    , "Number of Executions" )
       ("pop_size,p", po::value<uint>(&NP)->default_value(20)       , "Population Size"      )
-      ("protein_lenght,d", po::value<uint>(&PL)->default_value(13) , "Protein Length"       )
-      ("protein,o", po::value<std::string>(&PROTEIN)->default_value("1BXP"), "PDB ID"       )
+      ("protein,o", po::value<std::string>(&PDB)->default_value("1BXP"), "PDB ID"       )
       ("max_eval,e", po::value<uint>(&n_evals)->default_value(10e5), "Number of Function Evaluations")
       ("help,h", "Show help");
 
@@ -40,14 +39,26 @@ int main(int argc, char * argv[]){
     return 1;
   }
 
+  Benchmarks * B = NULL;
+  B = new F3DAB(NP, PDB);
 
+  uint PL = B->findSequence(PDB);
+  std::string PS = B->getSequence(PDB);
 
   uint n_dim = (2 * PL) - 5;
+
+  if( B == NULL ){
+    printf("Error while instantiate the benchmark function on file Main.cu at line 49.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  float x_min = B->getMin();
+  float x_max = B->getMax();
 
   printf(" +==============================================================+ \n");
   printf(" |                      EXECUTION PARAMETERS                    | \n");
   printf(" +==============================================================+ \n");
-  show_params(n_runs, NP, n_evals, n_dim, PL);
+  show_params(n_runs, NP, n_evals, n_dim, PL, PDB, PS);
   printf(" +==============================================================+ \n");
 
   cudaEvent_t start, stop;
@@ -78,30 +89,11 @@ int main(int argc, char * argv[]){
   float * p_res = thrust::raw_pointer_cast(d_res.data());
 
   thrust::device_vector<float>::iterator it;
-  int b_id;
-
-  Benchmarks * B = NULL;
-  B = new F3DAB(n_dim, NP, PL);
-
-  if( B == NULL ){
-    printf("Unknown function! Exiting...\n");
-    exit(EXIT_FAILURE);
-  }
-
-  std::cout << "Entrou com: " << PROTEIN << std::endl;
-  size_t ret = B->findSequence(PROTEIN);
-  if( ret == 0 ){
-    std::cout << "SEQUENCIA NAO ENCONTRADA" << std::endl;
-  } else {
-    std::cout << "SEQUENCIA ENCONTRADA COM TAMANHO " << ret << std::endl;
-  }
-
-  float x_min = B->getMin();
-  float x_max = B->getMax();
 
   float time  = 0.00;
   jDE * jde = new jDE(NP, n_dim, x_min, x_max);
-  HookeJeeves * hj  = new HookeJeeves(n_dim, PL, 0.9, 1.0e-30);
+  HookeJeeves * hj = new HookeJeeves(n_dim, PL, PS, 0.9, 1.0e-30);
+
   double hjres = 0;
 
   std::vector< std::pair<double, float> > stats;
@@ -110,6 +102,7 @@ int main(int argc, char * argv[]){
   std::mt19937 rng(seed);
   std::uniform_int_distribution<int> random_i(0, NP-1);//[0, NP-1]
 
+  int b_id;
   for( uint run = 1; run <= n_runs; run++ ){
     // Randomly initiate the population
 
@@ -204,7 +197,7 @@ int main(int argc, char * argv[]){
     // // printf("\n");
     double tini, tend;
     tini = stime();
-    hjres = hj->optimize(10000000, H.data());
+    hjres = hj->optimize(1000, H.data());
     tend = stime();
 
     printf(" | %-2d -- Conformation \n | ", run);

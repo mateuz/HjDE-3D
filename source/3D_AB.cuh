@@ -10,7 +10,7 @@ private:
   /* empty */
 
 public:
-  F3DAB( uint, uint, uint );
+  F3DAB( uint, std::string );
   ~F3DAB();
 
   void compute(float * x, float * fitness);
