@@ -8,13 +8,13 @@ double stime(){
   return mlsec/1000.0;
 }
 
-void show_params( uint n_runs, uint NP, uint n_evals, uint D, uint PL, std::string PDB, std::string PS ){
+void show_params( uint n_runs, uint NP, uint n_evals, uint D, size_t PL, std::string PDB, std::string PS ){
   int NBA = (NP%32)? (NP/32)+1 : NP/32;
   int NTB = 32 * ceil((double) D / 32.0);
   int NTC = 32 * ceil((double) PL / 32.0);
 
   printf(" | PDB ID                                   %s\n", PDB.c_str());
-  printf(" | Protein Sequence [%2d]                   %s\n", PL, PS.c_str());
+  printf(" | Protein Sequence [%2zu]                   %s\n", PL, PS.c_str());
   printf(" | Number of Executions:                    %d\n", n_runs);
   printf(" | Population Size:                         %d\n", NP);
   printf(" | Number of Dimensions:                    %d\n", D);

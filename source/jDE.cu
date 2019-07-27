@@ -40,7 +40,7 @@ jDE::jDE( uint _s, uint _ndim, float _x_min, float _x_max ):
   checkCudaErrors(cudaGetLastError());
 
   checkCudaErrors(cudaMalloc((void **)&d_states2, NP * n_dim * sizeof(curandStateXORWOW_t)));
-  sk2<<<NB_B, NT_B>>>(d_states2, seed);
+  setup_kernel2<<<NB_B, NT_B>>>(d_states2, seed);
   checkCudaErrors(cudaGetLastError());
 }
 
@@ -69,222 +69,21 @@ void jDE::update(){
   checkCudaErrors(cudaGetLastError());
 }
 
-
 /*
  * fog == fitness of the old offspring
  * fng == fitness of the new offspring
+ * BI  == best individual index
  */
-void jDE::run(float * og, float * ng){
-  rand_DE<<<NB_B, NT_B>>>(d_states2, og, ng, T_F, T_CR, fseq);
+void jDE::run_a(float * og, float * ng, uint BI){
+  best_DE_01<<<NB_B, NT_B>>>(d_states2, og, ng, T_F, T_CR, fseq, BI);
   checkCudaErrors(cudaGetLastError());
 }
 
-void jDE::run_b(float * og, float * ng, float * bg, float * fog, float * fng, uint b_id){
-  best_DE<<<NB_B, NT_B>>>(og, ng, bg, fog, fng, b_id);
-  checkCudaErrors(cudaGetLastError());
-}
-
-void jDE::index_gen(){
-  iGen<<<NB_A, NT_A>>>(d_states, rseq, fseq);
-  checkCudaErrors(cudaGetLastError());
-}
-
-void jDE::selection(float * og, float * ng, float * fog, float * fng){
-  selectionK<<<NB_A, NT_A>>>(og, ng, fog, fng);
-  checkCudaErrors(cudaGetLastError());
-}
-
-void jDE::crowding_selection(
-  float * og, float * ng,
-  float * fog, float * fng,
-  float * res
-){
-  float * iter;
-  int position;
-  thrust::device_ptr<float> d_fog = thrust::device_pointer_cast(fog);
-  thrust::device_ptr<float> d_fng = thrust::device_pointer_cast(fng);
-
-  thrust::device_ptr<float> d_f = thrust::device_pointer_cast(F);
-  thrust::device_ptr<float> d_cr = thrust::device_pointer_cast(CR);
-
-  thrust::device_ptr<float> d_tf = thrust::device_pointer_cast(T_F);
-  thrust::device_ptr<float> d_tcr = thrust::device_pointer_cast(T_CR);
-  // thrust::device_ptr<float> d_og = thrust::device_pointer_cast(og);
-  // thrust::device_ptr<float> d_ng = thrust::device_pointer_cast(ng);
-
-  // printf("NP: %d\n", NP);
-  for( uint p = 0; p < NP; p++ ){
-    crowding<<<NB_A, NT_A>>>(ng, og, p, res);
-    checkCudaErrors(cudaGetLastError());
-    // thrust::device_vector<float> d_res( res, res+NP);
-    // thrust::host_vector<float> h_res = d_res;
-    // for( int i = 0 ; i < NP; i++ ){
-    //   printf("%.1f ", h_res[i]);
-    // }
-    // printf("\n");
-    iter = thrust::min_element(thrust::device, res, res + NP);
-    position = iter - res;
-    //
-    // printf("[%d] The minimum distance element is: %i %.3f\n", p+1, position, h_res[position]);
-    // printf("d_fng[%d] %.4f <= d_fog[%d] %.4f\n", p, (float)d_fng[p], position, (float)d_fog[position]);
-    if( (float)d_fng[p] <= (float)d_fog[position] ){
-      // printf("Antes: %.3f e \n", (float)d_fog[position]);
-      // for( int i = 0; i < n_dim; i++ ){
-      //   printf("%.1f ", (float)d_og[position * n_dim + i]);
-      // }
-      // printf("\n");
-
-      thrust::copy_n(thrust::device,
-        ng + (p * n_dim),       //source
-        n_dim,                  //num elements to copy
-        og + (position * n_dim) //destination
-      );
-
-      thrust::copy_n(thrust::device,
-        fng + p,       //source fitness
-        1,             //copy just one value
-        fog + position //destination fitness update
-      );
-
-      // update F and CR;
-      d_f[position]  = d_tf[p];
-      d_cr[position] = d_tcr[p];
-
-      // printf("Agora: %.3f e \n", (float)d_fog[position]);
-      // for( int i = 0; i < n_dim; i++ ){
-      //   printf("%.1f ", (float)d_og[position * n_dim + i]);
-      // }
-      // printf("\n");
-      //
-      // printf("E deve ser: \n");
-      // for( int i = 0; i < n_dim; i++ ){
-      //   printf("%.1f ", (float)d_ng[p * n_dim + i]);
-      // }
-      // printf("\n");
-
-    }
-  }
-  // scanf("%d", &position);
-}
-
-/*
- * Update F and CR values accordly with jDE algorithm.
- *
- * F_Lower, F_Upper and T are constant variables declared
- * on constants header
- */
-__global__ void updateK(curandState * g_state, float * d_F, float * d_CR, float * d_TF, float * d_TCR) {
-  int index = threadIdx.x + blockDim.x * blockIdx.x;
-
-  uint ps = params.ps;
-
-  if( index < ps ){
-    curandState localState;
-    localState = g_state[index];
-
-    //(0, 1]
-    float r1, r2, r3, r4;
-    r1 = curand_uniform(&localState);
-    r2 = curand_uniform(&localState);
-    r3 = curand_uniform(&localState);
-    r4 = curand_uniform(&localState);
-
-    if (r2 < T){
-      d_TF[index] = F_Lower + (r1 * F_Upper);
-    } else {
-      d_TF[index] = d_F[index];
-    }
-
-    if (r4 < T){
-      d_TCR[index] = r3;
-    } else {
-      d_TCR[index] = d_CR[index];
-    }
-
-    g_state[index] = localState;
-  }
-}
-
-/*
- * Performs the selection step
- * In this case, each thread is a individual
- * og -> Old genes, the previous generation offspring
- * ng -> New genes, the new generation offsprings
- * fog -> fitness of the old offspring
- * fng -> fitness of the new offspring
- */
-__global__ void selectionK(float * og, float * ng, float * fog, float * fng){
-  uint index = threadIdx.x + blockDim.x * blockIdx.x;
-  uint ps = params.ps;
-
-  if( index < ps ){
-    uint ndim = params.n_dim;
-    if( fng[index] <= fog[index] ){
-      memcpy(og + (ndim * index), ng + (ndim * index), ndim * sizeof(float));
-      fog[index]  = fng[index];
-   }
-  }
-}
-
-/*
- * Performs the DE/rand/1/bin operation
- * 1 thread == 1 individual
- * rng == global random state
- * fog == fitness of the old offspring
- * fng == fitness of the new offspring
- * F == mutation factor vector
- * CR == crossover probability vector
- */
-__global__ void DE(curandState * rng, float * og, float * ng, float * F, float * CR, uint * fseq){
-  uint i, index, ps, n_dim;
-  index = threadIdx.x + blockDim.x * blockIdx.x;
-  ps = params.ps;
-
-  if(index < ps){
-    uint n1, n2, n3, p1, p2, p3, p4;
-    n_dim = params.n_dim;
-
-    float mF  = F[index];
-    float mCR = CR[index];
-
-    curandState random = rng[index];
-
-    n1 = fseq[index];
-    n2 = fseq[index + ps];
-    n3 = fseq[index + ps + ps];
-
-    //do n1 = curand(&random)%ps; while (n1 == index);
-    //do n2 = curand(&random)%ps; while (n2 == index || n2 == n1 );
-    //do n3 = curand(&random)%ps; while (n3 == index || n3 == n1 || n3 == n2);
-
-    p1 = index * n_dim;
-    p2 = n3 * n_dim;
-    p3 = n2 * n_dim;
-    p4 = n1 * n_dim;
-    //printf("[%u] %u %u %u => %u %u %u %u\n", index, n1, n2, n3, p4, p3, p2, p1);
-    for( i = 0; i < n_dim; i++ ){
-      if( curand_uniform(&random) <= mCR || (i == n_dim - 1) ){
-        /* Get three mutually different indexs */
-        ng[p1 + i] = og[p2 + i] + mF * (og[p3 + i] - og[p4 + i]);
-
-        /* Check bounds */
-        ng[p1 + i] = max(params.x_min, ng[p1 + i]);
-        ng[p1 + i] = min(params.x_max, ng[p1 + i]);
-      } else {
-        ng[p1 + i] = og[p1 + i];
-      }
-    }
-    rng[index] = random;
-  }
-}
-
-__global__ void rand_DE(curandState *rng, float * og, float * ng, float * F, float * CR, uint * fseq){
+__global__ void best_DE_01(curandState * rng, float * og, float * ng, float * F, float * CR, uint * fseq, uint pbest){
   uint id_d, id_p, ps, n_dim;
 
-  //id_g = threadIdx.x + blockDim.x * blockIdx.x;
-
   id_d = blockIdx.x;
-	id_p = threadIdx.x;
+  id_p = threadIdx.x;
 
   n_dim = params.n_dim;
   ps = params.ps;
@@ -294,21 +93,23 @@ __global__ void rand_DE(curandState *rng, float * og, float * ng, float * F, flo
   if( id_p < n_dim ){
     curandState random = rng[ id_d * id_p ];
 
-    __shared__ uint n1, n2, n3, p1, p2, p3, p4, rnbr;
-    __shared__ float mF, mCR;
+    __shared__ uint n1, n2, p1, p2, p3, rnbr, pb;
+    __shared__ float mF, mCR, ub, lb;
 
     if( id_p == 0 ){
+      lb = params.x_min;
+      ub = params.x_max;
+
       n1 = fseq[id_d];
       n2 = fseq[id_d + ps];
-      n3 = fseq[id_d + ps + ps];
 
       mF  = F[id_d];
       mCR = CR[id_d];
 
       p1 = id_d * n_dim;
-      p2 = n3 * n_dim;
-      p3 = n2 * n_dim;
-      p4 = n1 * n_dim;
+      p2 = n2 * n_dim;
+      p3 = n1 * n_dim;
+      pb = pbest * n_dim;
 
       rnbr = curand(&random) % n_dim;
     }
@@ -316,24 +117,29 @@ __global__ void rand_DE(curandState *rng, float * og, float * ng, float * F, flo
     __syncthreads();
 
     if( curand_uniform(&random) <= mCR || (id_p == rnbr) ){
-      ng[p1 + id_p] = og[p2 + id_p] + mF * (og[p3 + id_p] - og[p4 + id_p]);
+      float T  = og[pb + id_p] + mF * (og[p2 + id_p] - og[p3 + id_p]);
 
-      // ng[p1 + id_p] = max(params.x_min, ng[p1 + id_p]);
-      // ng[p1 + id_p] = min(params.x_max, ng[p1 + id_p]);
-      if( ng[p1 + id_p] <= params.x_min ){
-        ng[p1 + id_p] += 2.0 * params.x_max;
-      } else if( ng[p1 + id_p] > params.x_max ){
-        ng[p1 + id_p] += 2.0 * params.x_min;
+      // check bounds
+      if( T < lb ){
+        T = ub + T + ub;
+      } else if( T > ub ){
+        T = lb + T + lb;
       }
+
+      ng[p1 + id_p] = T;
     } else {
       ng[p1 + id_p] = og[p1 + id_p];
     }
-
     rng[id_d * id_p ] = random;
   }
 }
 
-__global__ void best_DE(float * og, float * ng, float * bnew, float * fog, float * fng, uint pbest){
+void jDE::run_b(float * og, float * ng, float * bg, float * fog, float * fng, uint b_id){
+  best_DE_02<<<NB_B, NT_B>>>(og, ng, bg, fog, fng, b_id);
+  checkCudaErrors(cudaGetLastError());
+}
+
+__global__ void best_DE_02(float * og, float * ng, float * bnew, float * fog, float * fng, uint pbest){
   uint id_d, id_p, n_dim;
 
   //id_g = threadIdx.x + blockDim.x * blockIdx.x;
@@ -383,38 +189,97 @@ __global__ void best_DE(float * og, float * ng, float * bnew, float * fog, float
   }
 }
 
+void jDE::index_gen(){
+  iGen<<<NB_A, NT_A>>>(d_states, rseq, fseq);
+  checkCudaErrors(cudaGetLastError());
+}
+
+void jDE::selection_A(float * og, float * ng, float * fog, float * fng){
+  selectionK<<<NB_A, NT_A>>>(og, ng, fog, fng, F, CR, T_F, T_CR);
+  checkCudaErrors(cudaGetLastError());
+}
+
+void jDE::selection_B(float * og, float * ng, float * fog, float * fng){
+  selectionK2<<<NB_A, NT_A>>>(og, ng, fog, fng, T_F, T_CR);
+  checkCudaErrors(cudaGetLastError());
+}
+
 /*
- * Performs the crowding operation
- * One thread per individual
+ * Update F and CR values accordly with jDE algorithm.
  *
- * The kernel calculate the projection of a vector (A)
- * in a set of vectors (B)
- *
- * @params:
- * float * A: fixed vector to compare
- * float * B: array to compare
- * uint pid: the fixed index to compare
- * float * res: stores the distance;
+ * F_Lower, F_Upper and T are constant variables declared
+ * on constants header
  */
-__global__ void crowding(float * A, float * B, uint p_id, float * res){
-  uint t_id = threadIdx.x + blockDim.x * blockIdx.x;
+__global__ void updateK(curandState * g_state, float * d_F, float * d_CR, float * d_TF, float * d_TCR) {
+  int index = threadIdx.x + blockDim.x * blockIdx.x;
 
-  uint N  = params.n_dim;
-  uint PS = params.ps;
+  uint ps = params.ps;
 
-  if( t_id < PS ){
-    float S = 0.0; //stores the sum
-    float D = 0.0; //stores the distance
+  if( index < ps ){
+    curandState localState;
+    localState = g_state[index];
 
-    for( uint i = 0; i < N; i++ ){
-      D = A[p_id * N + i] - B[t_id * N + i];
-      S += D * D;
+    //(0, 1]
+    float r1, r2, r3, r4;
+    r1 = curand_uniform(&localState);
+    r2 = curand_uniform(&localState);
+    r3 = curand_uniform(&localState);
+    r4 = curand_uniform(&localState);
+
+    if (r2 < T){
+      d_TF[index] = F_Lower + (r1 * F_Upper);
+    } else {
+      d_TF[index] = d_F[index];
     }
 
-    res[t_id] = S;
-  }
+    if (r4 < T){
+      d_TCR[index] = r3;
+    } else {
+      d_TCR[index] = d_CR[index];
+    }
 
+    g_state[index] = localState;
+  }
 }
+
+/*
+ * Performs the selection step
+ * In this case, each thread is a individual
+ * og -> Old genes, the previous generation offspring
+ * ng -> New genes, the new generation offsprings
+ * fog -> fitness of the old offspring
+ * fng -> fitness of the new offspring
+ */
+__global__ void selectionK(float * og, float * ng, float * fog, float * fng, float * d_F, float * d_CR, float * d_TF, float * d_TCR){
+  uint index = threadIdx.x + blockDim.x * blockIdx.x;
+  uint ps = params.ps;
+
+  if( index < ps ){
+    uint ndim = params.n_dim;
+    if( fng[index] <= fog[index] ){
+      memcpy(og + (ndim * index), ng + (ndim * index), ndim * sizeof(float));
+      fog[index] = fng[index];
+      d_F[index] = d_TF[index];
+      d_CR[index] = d_TCR[index];
+   }
+  }
+}
+
+__global__ void selectionK2(float * ng, float * bg, float * fng, float * fbg, float * d_TF, float * d_TCR){
+  uint index = threadIdx.x + blockDim.x * blockIdx.x;
+  uint ps = params.ps;
+
+  if( index < ps ){
+    uint ndim = params.n_dim;
+    if( fbg[index] < fng[index] ){
+      memcpy(ng + (ndim * index), bg + (ndim * index), ndim * sizeof(float));
+      fng[index]   = fbg[index];
+      d_TF[index]  = 0.5;
+      d_TCR[index] = 0.9;
+   }
+  }
+}
+
 
 /*
  * Generate 3 different indexs to DE/rand/1/bin.
@@ -463,7 +328,7 @@ __global__ void setup_kernel(curandState * random, uint seed){
  * Setup kernel version 2
  *
  */
-__global__ void sk2(curandState * random, uint seed){
+__global__ void setup_kernel2(curandState * random, uint seed){
   uint index = threadIdx.x + (blockIdx.x * blockDim.x);
   if (index < params.ps * params.n_dim)
     curand_init(seed, index, 0, &random[index]);
