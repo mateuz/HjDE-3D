@@ -36,7 +36,7 @@ F3DAB::F3DAB( uint _ps, std::string _seq ):Benchmarks()
   memset(s_2dab, 0, sizeof(char) * 150);
   strcpy(s_2dab, getSequence(_seq).c_str());
 
-  printf("Optimizing sequence: %s\n", s_2dab);
+  // printf("Optimizing sequence: %s\n", s_2dab);
 
   checkCudaErrors(cudaMemcpyToSymbol(S_AB, (void *) s_2dab, 150 * sizeof(char)));
   checkCudaErrors(cudaMemcpyToSymbol(PL, &protein_length, sizeof(int)));

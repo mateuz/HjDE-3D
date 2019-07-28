@@ -274,20 +274,22 @@ int main(int argc, char * argv[]){
 
     thrust::host_vector<double> H(n_dim);
     if( static_cast<float>(*it_A) < gb_e ){
-      printf(" +==============================================================+ \n");
-      printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it_A));
       ww = static_cast<float>(*it_A);
+      printf(" +==============================================================+ \n");
+      printf(" | %-2d -- Promising region found with value: %8f.\n", run, ww);
       for( int nd = 0; nd < n_dim; nd++ ){
         H[nd] = static_cast<double>(d_og[(b_id * n_dim) + nd]);
       }
     } else {
-      printf(" +==============================================================+ \n");
-      printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it_A));
       ww = gb_e;
+      printf(" +==============================================================+ \n");
+      printf(" | %-2d -- Promising region found with value: %8f.\n", run, ww);
       for( int nd = 0; nd < n_dim; nd++ )
         H[nd] = gb[nd];
     }
-
+    printf(" | Number of local resets: %d\n", local_reinit_counter + (5 * global_reinit_counter));
+    printf(" | Number of global resets: %d\n", global_reinit_counter);
+    printf(" | \n");
 
     double tini, tend;
     tini = stime();
@@ -298,17 +300,10 @@ int main(int argc, char * argv[]){
     for( int nd = 0; nd < n_dim; nd++ ){
       printf("%.5lf, ", (H[nd] * 180.0) / PI );
     }
-    printf("\n");
-
-    if( hjres > 16.5264 ){
-      printf("\n \n \n \n \n \n ");
-    }
+    printf(" | \n\n");
     printf(" | Execution: %-2d Overall Best: %+.4f -> %+.4lf GPU Time (s): %.8f and HJ Time (s): %.8f\n", run, ww, hjres, time/1000.0, tend-tini);
-    int teste;
-    if( hjres < -16.5264 ){
-      printf("\n \n \n \n \n \n ");
-      scanf("%d", &teste);
-    }
+    printf(" +==============================================================+ \n");
+
     stats.push_back(std::make_pair(hjres, time));
     // stats.push_back(std::make_pair(static_cast<float>(*it), time));
 
