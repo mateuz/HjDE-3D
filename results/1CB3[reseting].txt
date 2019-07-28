@@ -1,0 +1,460 @@
+(base) matz@matz-desktop:~/Documents/3DcuHjDE$ ./demo -r 30 -p 50 -o 1CB3 -e 150000 -j 50000
+Optimizing sequence: BABBBAABBAAAB
+ +==============================================================+ 
+ |                      EXECUTION PARAMETERS                    | 
+ +==============================================================+ 
+ | PDB ID                                   1CB3
+ | Protein Sequence [13]                   BABBBAABBAAAB
+ | Number of Executions:                    30
+ | Population Size:                         50
+ | Number of Dimensions:                    21
+ | Number of Function Evaluations:          150000
+ | Optimization Function:                   3D-AB
+ +==============================================================+ 
+ | Structure (A | S1)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         2
+ | Structure (B | S2)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         50
+ | Structure (C | S3)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         50
+ +==============================================================+ 
+ | Number of Dimensions:        21
+ | Protein Length:              13
+ | Protein Seq:                 BABBBAABBAAAB
+ | Rho:                         0.900
+ | Epsilon                      0.000
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -3.55405 vs -3.55410
+ +==============================================================+ 
+ | 1  -- Promising region found with value: -3.554046.
+ | HJ uses 50013 / 50000 iterations [0.000000169001825998257915577576].
+ | 1  -- Conformation 
+ | -12.91241, 27.20974, -45.19015, -7.44381, 0.28274, -5.88919, 21.41397, 14.07569, 0.35526, 6.08279, 15.73229, -21.17323, -161.97543, 170.50641, 88.82834, 6.32789, -19.83349, 6.00424, -21.88913, -133.13521, -164.35398, 
+ | Execution: 1  Overall Best: -3.5541 -> -3.5541 GPU Time (s): 0.29601849 and HJ Time (s): 0.32938504
+ RESET CHECK 
+ | LOCAL RESETING
+ -7.04255 vs -8.06712
+ +==============================================================+ 
+ | 2  -- Promising region found with value: -7.042554.
+ | HJ uses 50030 / 50000 iterations [0.000000136891479058588920088166].
+ | 2  -- Conformation 
+ | -11.66025, 34.59804, -45.44850, -3.01836, -31.50533, -21.97690, 82.35599, -25.33517, -1.03725, -0.62572, -5.88895, 2.18448, -170.43511, 175.45635, 177.72057, -136.88951, -157.98924, 32.39585, 91.11446, 29.11408, 6.47958, 
+ | Execution: 2  Overall Best: -8.0671 -> -8.0671 GPU Time (s): 0.28241327 and HJ Time (s): 0.33159113
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -4.83139 vs -5.35912
+ +==============================================================+ 
+ | 3  -- Promising region found with value: -4.831391.
+ | HJ uses 50014 / 50000 iterations [0.000000257585468675899883292532].
+ | 3  -- Conformation 
+ | -12.11809, -13.17923, -7.26324, -22.44610, -8.16731, 3.64723, 48.94143, 15.75806, -0.10699, -18.39163, -6.65068, -48.72248, 52.16721, 16.37532, -0.55499, -58.36141, -152.74746, 125.86483, 90.51185, -20.45220, -47.70165, 
+ | Execution: 3  Overall Best: -5.3591 -> -5.3591 GPU Time (s): 0.32674249 and HJ Time (s): 0.32741785
+ -5.71697 vs 21.44831
+ +==============================================================+ 
+ | 4  -- Promising region found with value: -5.716966.
+ | HJ uses 50019 / 50000 iterations [0.000001906837481167973000873534].
+ | 4  -- Conformation 
+ | -12.09817, -23.49213, 28.23395, 7.91936, -0.25912, -0.17142, -34.25654, -14.52415, -34.28582, -3.91455, -11.05988, 22.61637, -71.28135, -100.52075, -160.83748, -125.83440, -34.26915, 50.61462, 42.92243, 159.55943, 100.54560, 
+ | Execution: 4  Overall Best: -5.7170 -> -5.7257 GPU Time (s): 0.27386288 and HJ Time (s): 0.32835221
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -3.13804 vs -3.13805
+ +==============================================================+ 
+ | 5  -- Promising region found with value: -3.138044.
+ | HJ uses 50004 / 50000 iterations [0.000000318006751451728275814277].
+ | 5  -- Conformation 
+ | -10.26228, 21.98699, -55.78186, -6.16778, -0.56630, -4.88712, -14.75832, 3.69423, 1.47543, -0.10504, -0.00742, -45.55490, 175.89796, 171.96462, 92.35467, 10.61051, -20.74682, 21.67516, 1.53441, 113.00541, 92.93220, 
+ | Execution: 5  Overall Best: -3.1381 -> -3.1381 GPU Time (s): 0.34567841 and HJ Time (s): 0.32641792
+ RESET CHECK 
+ | LOCAL RESETING
+ -3.75155 vs -7.46430
+ +==============================================================+ 
+ | 6  -- Promising region found with value: -3.751548.
+ | HJ uses 50011 / 50000 iterations [0.000000187779806664731011426245].
+ | 6  -- Conformation 
+ | -12.78541, 31.61289, -48.83445, -5.23151, 18.65205, 4.44266, -2.37324, 8.08339, -137.22643, 110.40855, -11.10740, -10.36873, 168.78554, -179.32121, -170.96608, 170.34003, -103.77274, -16.74979, 160.72186, -177.02484, -9.84661, 
+ | Execution: 6  Overall Best: -7.4643 -> -7.4643 GPU Time (s): 0.28236444 and HJ Time (s): 0.33103085
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -7.19227 vs -2.66797
+ +==============================================================+ 
+ | 7  -- Promising region found with value: -7.192265.
+ | HJ uses 50011 / 50000 iterations [0.000026561398887587543780203214].
+ | 7  -- Conformation 
+ | -11.98172, 38.56465, -6.47442, -1.63377, 19.38076, -113.71355, -47.17341, 53.41291, 50.29165, -17.94168, -0.32889, -19.86737, -132.76322, 176.70788, 162.55030, 14.21952, 117.12406, -1.49573, -35.02221, 59.65808, -0.66284, 
+ | Execution: 7  Overall Best: -7.1923 -> -7.5178 GPU Time (s): 0.31326099 and HJ Time (s): 0.33280396
+ -8.09162 vs 13.35425
+ +==============================================================+ 
+ | 8  -- Promising region found with value: -8.091623.
+ | HJ uses 50023 / 50000 iterations [0.000002906321416198708631047033].
+ | 8  -- Conformation 
+ | -14.33363, 1.25862, 1.03871, -32.39938, 66.99321, -4.22835, 0.48240, -17.21656, -3.53565, 64.20542, 1.88946, -47.29079, -147.76783, 169.81965, 39.16113, 1.26361, -86.17937, -172.84549, 157.68780, 128.98464, 152.78770, 
+ | Execution: 8  Overall Best: -8.0916 -> -8.0925 GPU Time (s): 0.27641656 and HJ Time (s): 0.33179498
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ -5.45939 vs -1.33529
+ +==============================================================+ 
+ | 9  -- Promising region found with value: -5.459392.
+ | HJ uses 50010 / 50000 iterations [0.000026561398887587543780203214].
+ | 9  -- Conformation 
+ | -11.21721, 14.85494, -28.44097, 12.72786, 7.41694, -28.39538, 72.72159, -31.00814, -33.33215, 3.02202, -3.54830, -51.46127, 36.85953, 34.17203, 81.65153, 60.75649, 12.31492, -133.94937, -72.92733, 171.73219, -142.05855, 
+ | Execution: 9  Overall Best: -5.4594 -> -5.5054 GPU Time (s): 0.32472867 and HJ Time (s): 0.32909203
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.29525 vs -5.30075
+ +==============================================================+ 
+ | 10 -- Promising region found with value: -5.295252.
+ | HJ uses 50009 / 50000 iterations [0.000000058927293063124203567815].
+ | 10 -- Conformation 
+ | -12.15083, -13.48352, -12.51975, -34.35726, -13.52674, 16.51608, 49.15382, -5.31550, -6.50346, 17.89403, -6.67762, -52.23448, 48.63347, 16.00978, 60.30065, 117.08787, -160.03903, -64.00771, -81.06326, 29.23033, -11.02086, 
+ | Execution: 10 Overall Best: -5.3007 -> -5.3008 GPU Time (s): 0.32098459 and HJ Time (s): 0.32575488
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -3.45383 vs -5.19257
+ +==============================================================+ 
+ | 11 -- Promising region found with value: -3.453830.
+ | HJ uses 50015 / 50000 iterations [0.000000065474770070138002493695].
+ | 11 -- Conformation 
+ | -13.16877, 105.16211, -0.23783, -13.17782, -34.76334, 0.01924, -27.08974, -6.78830, 86.84364, -5.95746, 27.14477, 173.49784, -106.86783, -108.59950, -60.26685, -90.08406, -177.14944, 98.05554, 42.85529, -28.59391, -70.66204, 
+ | Execution: 11 Overall Best: -5.1926 -> -5.1926 GPU Time (s): 0.33235059 and HJ Time (s): 0.33036399
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -4.80949 vs -2.27163
+ +==============================================================+ 
+ | 12 -- Promising region found with value: -4.809491.
+ | HJ uses 50018 / 50000 iterations [0.000002354120347120954029264579].
+ | 12 -- Conformation 
+ | -13.84551, -75.91259, 7.33740, -23.11846, -27.96486, 13.94074, 128.13452, 13.80003, 69.22889, -45.53824, -2.14030, -25.28341, 32.20179, 55.56146, 27.40731, 42.19138, 28.07415, -149.32692, -168.00995, -167.47958, -131.51321, 
+ | Execution: 12 Overall Best: -4.8095 -> -5.3654 GPU Time (s): 0.36974619 and HJ Time (s): 0.33330798
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | GLOBAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -2.34446 vs -2.34473
+ +==============================================================+ 
+ | 13 -- Promising region found with value: -2.344462.
+ | HJ uses 50027 / 50000 iterations [0.000000136891479058588920088166].
+ | 13 -- Conformation 
+ | -13.64570, -5.39250, 107.08218, -12.79422, 3.85948, -5.25970, -0.73505, 0.00415, 0.01182, 0.00099, 0.00220, 63.87395, -0.13765, -167.61100, -152.96612, -171.95286, -171.95015, -172.26531, -150.40161, 98.11718, 119.88086, 
+ | Execution: 13 Overall Best: -2.3447 -> -2.3447 GPU Time (s): 0.33496817 and HJ Time (s): 0.33015299
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.36187 vs -5.36201
+ +==============================================================+ 
+ | 14 -- Promising region found with value: -5.361871.
+ | HJ uses 50024 / 50000 iterations [0.000000025366267437735433111276].
+ | 14 -- Conformation 
+ | -13.44913, 104.84123, 4.78288, -8.91037, 1.78411, 16.92674, -48.84932, 25.32227, 11.14285, -12.47020, 9.55540, -171.28269, 104.62694, 80.25332, 86.53068, 28.06864, -29.99611, -149.75768, 177.70470, 64.60491, 38.88940, 
+ | Execution: 14 Overall Best: -5.3620 -> -5.3621 GPU Time (s): 0.28233121 and HJ Time (s): 0.33302689
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.34772 vs -5.34777
+ +==============================================================+ 
+ | 15 -- Promising region found with value: -5.347716.
+ | HJ uses 50021 / 50000 iterations [0.000000136891479058588920088166].
+ | 15 -- Conformation 
+ | -11.99975, -10.19482, 2.93964, 14.83726, 10.25920, 1.70077, 48.28347, -24.65604, -0.48097, -45.77258, -8.53430, 41.30514, -59.22852, -29.51647, -50.07738, -69.30459, 9.22327, 113.44112, 152.52945, 25.00241, 55.12077, 
+ | Execution: 15 Overall Best: -5.3478 -> -5.3478 GPU Time (s): 0.30190237 and HJ Time (s): 0.33033299
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -8.39855 vs -8.39955
+ +==============================================================+ 
+ | 16 -- Promising region found with value: -8.398545.
+ | HJ uses 50005 / 50000 iterations [0.000000436223253020203343021288].
+ | 16 -- Conformation 
+ | -15.20013, -21.30865, -7.64078, -27.71171, 0.56523, -6.82135, 71.83404, 3.44296, -21.84698, -1.66428, -12.76847, 51.28015, 150.27058, -170.19290, -145.03031, 156.61920, 31.42412, -25.05686, -78.51974, 32.30386, 10.76928, 
+ | Execution: 16 Overall Best: -8.3995 -> -8.3996 GPU Time (s): 0.28854868 and HJ Time (s): 0.33298898
+ RESET CHECK 
+ | LOCAL RESETING
+ -8.02279 vs -8.02320
+ +==============================================================+ 
+ | 17 -- Promising region found with value: -8.022794.
+ | HJ uses 50019 / 50000 iterations [0.000000065474770070138002493695].
+ | 17 -- Conformation 
+ | -10.97222, 19.18871, -13.92513, -11.60830, -4.75598, 13.43762, 2.52512, 17.23343, -108.34715, -20.95611, -2.00461, -43.00708, -147.26216, 168.93308, -161.47244, 168.65783, 81.77203, -4.09863, -147.46081, 38.38057, -3.57430, 
+ | Execution: 17 Overall Best: -8.0232 -> -8.0232 GPU Time (s): 0.28262701 and HJ Time (s): 0.33242917
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.89311 vs -5.89410
+ +==============================================================+ 
+ | 18 -- Promising region found with value: -5.893109.
+ | HJ uses 42178 / 50000 iterations [0.000000000095303657322459476629].
+ | 18 -- Conformation 
+ | -13.53258, -73.61495, 10.49569, -5.06199, -15.82605, -18.93020, 100.04896, 19.54557, -10.13864, -44.74659, -8.05483, 11.14585, -99.49773, -60.60819, 17.65683, 101.30890, -2.79058, -80.19774, -124.41391, -6.89865, -49.53756, 
+ | Execution: 18 Overall Best: -5.8941 -> -5.8941 GPU Time (s): 0.29675803 and HJ Time (s): 0.27805924
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -7.69395 vs -7.69673
+ +==============================================================+ 
+ | 19 -- Promising region found with value: -7.693950.
+ | HJ uses 50010 / 50000 iterations [0.000000208644229627478892761456].
+ | 19 -- Conformation 
+ | -13.33244, 21.80484, 2.65878, -9.63455, -14.65883, -7.43423, 9.32181, 10.15091, 12.89588, -27.93660, 7.00993, 37.19666, 138.08405, -171.39313, -151.79374, -172.00324, -83.74161, 4.21006, -11.31487, 100.95254, 16.33953, 
+ | Execution: 19 Overall Best: -7.6967 -> -7.6968 GPU Time (s): 0.29405722 and HJ Time (s): 0.32794499
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -6.97258 vs -7.10889
+ +==============================================================+ 
+ | 20 -- Promising region found with value: -6.972577.
+ | HJ uses 50012 / 50000 iterations [0.000000047731107381130604228185].
+ | 20 -- Conformation 
+ | -164.94652, 9.61521, 59.74819, 21.71438, 11.38380, 2.93918, -31.28375, 21.80053, -19.19381, -121.64024, 34.85342, -126.49038, -13.68203, 15.70110, -41.07318, -66.73791, 14.21078, 109.60090, 131.42418, -39.22910, -167.91621, 
+ | Execution: 20 Overall Best: -7.1089 -> -7.1089 GPU Time (s): 0.29364429 and HJ Time (s): 0.33209515
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -8.00212 vs -2.66796
+ +==============================================================+ 
+ | 21 -- Promising region found with value: -8.002119.
+ | HJ uses 50001 / 50000 iterations [0.000002118708312408858795744711].
+ | 21 -- Conformation 
+ | -15.20399, 23.53487, -55.85313, -7.89710, 21.42731, 12.19118, 35.96307, -2.41180, 55.98106, -16.15902, -12.64708, -6.28299, 169.84893, 179.60345, 141.55685, 127.68688, -148.42497, -55.94370, -32.25630, -32.71253, -9.35657, 
+ | Execution: 21 Overall Best: -8.0021 -> -8.0119 GPU Time (s): 0.28795767 and HJ Time (s): 0.33107185
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.94681 vs -5.89202
+ +==============================================================+ 
+ | 22 -- Promising region found with value: -5.946805.
+ | HJ uses 50006 / 50000 iterations [0.000000257585468675899883292532].
+ | 22 -- Conformation 
+ | -12.89679, -17.50202, -46.92529, 36.68245, 45.07805, -14.71870, -18.16077, 6.57610, 59.79369, 11.38121, 5.88184, 11.14966, 112.23709, 112.67080, -163.44781, -74.13320, 11.10400, 99.53728, 52.88443, 177.14954, 128.17991, 
+ | Execution: 22 Overall Best: -5.9468 -> -5.9471 GPU Time (s): 0.30302936 and HJ Time (s): 0.33235788
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -4.00108 vs -4.06461
+ +==============================================================+ 
+ | 23 -- Promising region found with value: -4.001077.
+ | HJ uses 50029 / 50000 iterations [0.000000022829640693961888807531].
+ | 23 -- Conformation 
+ | -12.09787, 27.55464, 3.93613, 6.63734, -36.15911, -15.43874, -15.34579, -5.42050, 20.88866, -3.54399, -0.79107, 35.10805, -61.41307, -44.02785, -133.72995, 146.01030, 112.66513, 174.50819, -165.59691, 82.11713, 106.55262, 
+ | Execution: 23 Overall Best: -4.0646 -> -4.0646 GPU Time (s): 0.29163596 and HJ Time (s): 0.32924008
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -7.53420 vs -7.64351
+ +==============================================================+ 
+ | 24 -- Promising region found with value: -7.534197.
+ | HJ uses 50012 / 50000 iterations [0.000000038662196978715788167516].
+ | 24 -- Conformation 
+ | -14.18960, 23.45094, -50.58940, -10.04181, 11.43459, -0.81608, 0.09726, 0.51485, -23.13014, 84.25217, 73.26930, -14.76405, -165.88546, 167.70877, 124.11470, 106.06934, -167.72999, -81.05766, -48.81776, 12.74372, -10.33263, 
+ | Execution: 24 Overall Best: -7.6435 -> -7.6435 GPU Time (s): 0.28637988 and HJ Time (s): 0.33228612
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.50464 vs -5.35140
+ +==============================================================+ 
+ | 25 -- Promising region found with value: -5.504643.
+ | HJ uses 50021 / 50000 iterations [0.000002354120347120954029264579].
+ | 25 -- Conformation 
+ | -13.49378, -71.00962, 1.85066, -0.38631, -0.29210, -15.62471, 48.91234, -24.62653, -8.90730, 17.59679, -8.05928, -4.97861, 110.55756, 93.03503, 91.78742, 32.92461, -26.69928, -145.30219, -177.18778, 69.61304, 43.90710, 
+ | Execution: 25 Overall Best: -5.5046 -> -5.5070 GPU Time (s): 0.31554846 and HJ Time (s): 0.32896209
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -7.23218 vs -2.66795
+ +==============================================================+ 
+ | 26 -- Promising region found with value: -7.232180.
+ | HJ uses 50021 / 50000 iterations [0.000004921880838284658544763001].
+ | 26 -- Conformation 
+ | -14.51689, 20.58691, -44.20072, -18.06958, -1.79373, 12.75431, 10.97283, 12.16778, 70.30584, 51.67032, -2.88789, -32.03123, -161.12838, 157.35595, 92.67309, 120.36211, -152.79731, -66.24274, -2.27421, -115.58240, -114.48272, 
+ | Execution: 26 Overall Best: -7.2322 -> -7.3880 GPU Time (s): 0.28780463 and HJ Time (s): 0.35214305
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -4.15159 vs -6.24928
+ +==============================================================+ 
+ | 27 -- Promising region found with value: -4.151589.
+ | HJ uses 50012 / 50000 iterations [0.000000912034456046449975750393].
+ | 27 -- Conformation 
+ | 28.08982, -96.62678, -6.81294, -137.40034, 77.89169, -73.80884, 34.53812, -59.99617, -88.97823, -26.34923, 0.86400, 171.55569, -153.88178, -4.56741, -156.31859, -21.02764, 140.76147, 165.99885, -176.59620, 43.19709, 91.18027, 
+ | Execution: 27 Overall Best: -6.2493 -> -6.2673 GPU Time (s): 0.29103513 and HJ Time (s): 0.33309412
+ RESET CHECK 
+ | LOCAL RESETING
+ -6.04857 vs -5.94649
+ +==============================================================+ 
+ | 28 -- Promising region found with value: -6.048571.
+ | HJ uses 50031 / 50000 iterations [0.000040483766022843381397235130].
+ | 28 -- Conformation 
+ | -21.44851, -14.99463, 5.72699, -38.70290, 66.62543, -10.13102, -60.72051, -14.04397, -12.84582, 47.05245, -4.15309, 45.99119, 151.14672, -175.78649, -24.49471, -3.07124, 80.22265, 169.45618, -159.57662, -115.15130, -154.26650, 
+ | Execution: 28 Overall Best: -6.0486 -> -7.7123 GPU Time (s): 0.27858694 and HJ Time (s): 0.33300495
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.75133 vs -5.75161
+ +==============================================================+ 
+ | 29 -- Promising region found with value: -5.751328.
+ | HJ uses 50018 / 50000 iterations [0.000000065474770070138002493695].
+ | 29 -- Conformation 
+ | -13.56740, -72.93478, 7.38056, -12.96095, 20.25679, 3.17420, -0.21574, 3.39412, 41.89677, -79.34573, -28.30765, -10.51193, 100.14555, 53.11310, 46.35109, 66.38928, -19.58619, -106.02940, -150.86292, -170.18557, -118.38462, 
+ | Execution: 29 Overall Best: -5.7516 -> -5.7516 GPU Time (s): 0.28757800 and HJ Time (s): 0.33159304
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ RESET CHECK 
+ | LOCAL RESETING
+ -5.93251 vs -5.93258
+ +==============================================================+ 
+ | 30 -- Promising region found with value: -5.932506.
+ | HJ uses 50031 / 50000 iterations [0.000000187779806664731011426245].
+ | 30 -- Conformation 
+ | -13.61379, -67.39989, 6.03163, 4.68516, -5.53028, 0.21714, 16.58432, 9.84436, -46.59642, -11.50405, -4.21006, -1.65632, 116.11348, 83.50191, 123.09114, 91.11545, 4.90532, -81.51589, -153.06878, -32.47373, -82.19140, 
+ | Execution: 30 Overall Best: -5.9326 -> -5.9326 GPU Time (s): 0.31140872 and HJ Time (s): 0.32989192
+ +==============================================================+ 
+ |                     EXPERIMENTS RESULTS                      | 
+ +==============================================================+ 
+ | Objective Function:
+ | 	 mean:         -6.15620279312133789062E+00
+ | 	 std:          +1.55688238143920898438E+00
+ | Execution Time (ms): 
+ | 	 mean:         +302.012
+ | 	 std:          +22.639
+ +==============================================================+ 

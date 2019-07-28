@@ -48,7 +48,7 @@ public:
   ~jDE();
 
   /* jDE functions */
-  void run_a(float *, float *, float *, float *, uint);
+  void run_a(float *, float *, uint);
   void run_b(float *, float *, float *, float *, float *, uint);
   void update();
   void selection_A(float *, float *, float *, float *);
@@ -64,7 +64,7 @@ __global__ void selectionK(float *, float *, float *, float *, float *, float *,
 
 __global__ void selectionK2(float *, float *, float *, float *, float *, float *);
 
-__global__ void best_DE_01(curandState *, float *, float *, float *, float *, float *, float *, float *, uint *, uint);
+__global__ void best_DE_01(curandState *, float *, float *, float *, float *, uint *, uint);
 
 __global__ void best_DE_02(float *, float *, float *, float *, float *, uint);
 

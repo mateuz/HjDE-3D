@@ -1,0 +1,2192 @@
+(base) matz@matz-desktop:~/Documents/3DcuHjDE$ ./demo -r 30 -p 50 -o 1CB3 -e 150000 -j 50000
+Optimizing sequence: BABBBAABBAAAB
+ +==============================================================+ 
+ |                      EXECUTION PARAMETERS                    | 
+ +==============================================================+ 
+ | PDB ID                                   1CB3
+ | Protein Sequence [13]                   BABBBAABBAAAB
+ | Number of Executions:                    30
+ | Population Size:                         50
+ | Number of Dimensions:                    21
+ | Number of Function Evaluations:          150000
+ | Optimization Function:                   3D-AB
+ +==============================================================+ 
+ | Structure (A | S1)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         2
+ | Structure (B | S2)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         50
+ | Structure (C | S3)
+ | 	 Number of Threads                        32
+ | 	 Number of Blocks                         50
+ +==============================================================+ 
+ | Number of Dimensions:        21
+ | Protein Length:              13
+ | Protein Seq:                 BABBBAABBAAAB
+ | Rho:                         0.900
+ | Epsilon                      0.000
+ +==============================================================+ 
+ | 1  -- Promising region found with value: -5.982202.
+ | HJ uses 50021 / 50000 iterations [0.000000484692503355781480481530].
+ | 1  -- Conformation 
+ | -13.27294, -69.14525, 3.25705, 7.81783, -11.84152, 1.35540, -68.37110, 15.67505, -33.38877, 11.76138, 6.83958, -16.00406, 74.11840, 36.82269, -39.95395, -123.29608, 172.46249, 53.67025, 49.49118, -55.12021, -30.50859, 
+ | Execution: 1  Overall Best: -5.9822 -> -5.9822 GPU Time (s): 0.28168497 and HJ Time (s): 0.32982421
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 2  -- Promising region found with value: -1.808773.
+ | HJ uses 50030 / 50000 iterations [0.000000008844670561349016429874].
+ | 2  -- Conformation 
+ | -13.14924, -27.74695, 32.05687, -45.74205, -34.08026, -21.56281, -31.73328, 0.33336, 0.49457, -0.42162, 0.04318, 22.93914, 150.62578, 52.42491, -29.31011, -112.16325, -143.37306, -90.51650, -111.36083, 0.09066, -18.54145, 
+ | Execution: 2  Overall Best: -1.8088 -> -1.8088 GPU Time (s): 0.27977939 and HJ Time (s): 0.32899594
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 3  -- Promising region found with value: -5.445056.
+ | HJ uses 50017 / 50000 iterations [0.000000538547225950868288117451].
+ | 3  -- Conformation 
+ | -13.58564, -71.28387, 5.26557, 173.92645, -11.11762, -26.23830, 63.14478, -32.51804, 0.04465, -3.67686, -1.74463, -6.64856, 108.61286, 109.17710, 29.29033, 18.98432, 15.47621, -166.91119, -172.35914, -60.63600, -94.35384, 
+ | Execution: 3  Overall Best: -5.4451 -> -5.4451 GPU Time (s): 0.27987363 and HJ Time (s): 0.33007693
+ +==============================================================+ 
+ | 4  -- Promising region found with value: -2.673373.
+ | HJ uses 50012 / 50000 iterations [0.000000004700420567793882467858].
+ | 4  -- Conformation 
+ | -167.60147, -26.45504, 44.84880, -170.47866, -4.04107, 5.32488, 33.68885, -13.44247, -27.78312, 23.25465, -3.54108, 147.13604, 12.48850, -166.22244, -94.69847, -177.24433, -171.96267, -164.30983, 168.23756, 37.91935, 20.09966, 
+ | Execution: 4  Overall Best: -2.6734 -> -2.6734 GPU Time (s): 0.27409305 and HJ Time (s): 0.33308005
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 5  -- Promising region found with value: -1.335288.
+ | HJ uses 50013 / 50000 iterations [0.000000072749744522375552444155].
+ | 5  -- Conformation 
+ | -13.54271, -70.95353, 3.56956, 0.20196, -0.00932, -0.00126, -0.00031, -0.00026, -0.00046, 0.00033, 0.00012, 5.73799, -110.13123, -93.38157, -94.28601, -94.40506, -94.41675, -94.18589, -116.06980, -4.58889, -26.34956, 
+ | Execution: 5  Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.28798874 and HJ Time (s): 0.32408309
+ +==============================================================+ 
+ | 6  -- Promising region found with value: -6.864329.
+ | HJ uses 50005 / 50000 iterations [0.000000484692503355781480481530].
+ | 6  -- Conformation 
+ | -13.27162, -7.63414, 114.07119, -14.54209, -163.75312, 7.20958, 28.20445, 16.71122, -63.48974, 5.77464, -5.29597, 64.16677, 5.82813, -163.01660, -14.40850, -138.60286, -50.05319, 36.07812, 135.89693, -10.25364, 10.75958, 
+ | Execution: 6  Overall Best: -6.8643 -> -6.8644 GPU Time (s): 0.27383295 and HJ Time (s): 0.33068299
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 7  -- Promising region found with value: -1.335289.
+ | HJ uses 50008 / 50000 iterations [0.000000047731107381130604228185].
+ | 7  -- Conformation 
+ | -13.54251, -70.95355, 3.56974, 0.20186, -0.00932, -0.00131, -0.00034, -0.00028, -0.00045, 0.00037, 0.00017, 5.73810, -110.13114, -93.38082, -94.28294, -94.39940, -94.40798, -94.17425, -116.05736, -4.57645, -26.33705, 
+ | Execution: 7  Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.29176526 and HJ Time (s): 0.32519913
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 8  -- Promising region found with value: -1.335243.
+ | HJ uses 50010 / 50000 iterations [0.000000484692503355781480481530].
+ | 8  -- Conformation 
+ | -13.54005, -70.95471, 3.57523, 0.19936, -0.00838, -0.00111, -0.00028, -0.00019, 0.00033, -0.00045, -0.00010, -5.74247, 110.12687, 93.33297, 94.10406, 94.08300, 93.96688, 94.06969, 72.13871, -176.38029, 161.85452, 
+ | Execution: 8  Overall Best: -1.3352 -> -1.3353 GPU Time (s): 0.28857755 and HJ Time (s): 0.32881308
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 9  -- Promising region found with value: -2.846844.
+ | HJ uses 50020 / 50000 iterations [0.000000025366267437735433111276].
+ | 9  -- Conformation 
+ | -11.45411, 10.14835, -22.85880, -15.50164, -5.69982, -3.44673, -0.57413, -0.09351, -0.16606, 0.17529, 0.03848, 41.93736, 147.27091, -168.41230, -146.54077, -172.42726, 161.95542, -168.38554, -139.12080, -28.03446, 1.29835, 
+ | Execution: 9  Overall Best: -2.8468 -> -2.8469 GPU Time (s): 0.28884583 and HJ Time (s): 0.34772611
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 10 -- Promising region found with value: -5.591246.
+ | HJ uses 50023 / 50000 iterations [0.000000664873118457862050109729].
+ | 10 -- Conformation 
+ | -12.62663, 25.91803, -60.84137, 121.01521, 12.38803, -34.19901, 52.95598, -41.79620, -16.57098, -3.08877, -4.93044, 19.09873, -31.55764, 167.07831, 109.75262, -176.33639, -134.65227, 0.38477, 18.43642, -93.19809, -76.79440, 
+ | Execution: 10 Overall Best: -5.5912 -> -5.5913 GPU Time (s): 0.28800104 and HJ Time (s): 0.34276795
+ +==============================================================+ 
+ | 11 -- Promising region found with value: -5.144012.
+ | HJ uses 50019 / 50000 iterations [0.000003588051131109516567023205].
+ | 11 -- Conformation 
+ | 70.77836, -50.28531, 11.25748, 1.72758, 4.34771, -0.51686, -26.75097, -4.79689, 35.58957, -28.02046, -6.55221, 154.73128, -120.66387, -93.21708, -65.75547, -100.54840, 175.02597, 87.66164, 21.16396, 20.29526, 74.54543, 
+ | Execution: 11 Overall Best: -5.1440 -> -5.1500 GPU Time (s): 0.36747870 and HJ Time (s): 0.33146691
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 12 -- Promising region found with value: -0.649431.
+ | HJ uses 50017 / 50000 iterations [0.000000110882098037457025800810].
+ | 12 -- Conformation 
+ | 29.38876, -82.07036, -3.25911, 3.87717, 0.72095, 0.04599, 0.00260, 0.00105, 0.00032, -0.00000, -0.00011, -179.99001, -0.12922, -0.16120, -0.20247, -0.24992, -0.32621, -0.62110, 21.25925, -90.22165, -68.46061, 
+ | Execution: 12 Overall Best: -0.6494 -> -0.6494 GPU Time (s): 0.28959436 and HJ Time (s): 0.32589912
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 13 -- Promising region found with value: -4.203091.
+ | HJ uses 50009 / 50000 iterations [0.000000018492008962109129867926].
+ | 13 -- Conformation 
+ | -14.59896, 8.18762, -5.73485, 21.40004, 53.79967, -13.41814, 2.96460, -8.49402, 15.84040, 18.35130, -0.75805, -7.25119, -109.48801, -56.64319, 20.49794, 119.02678, 160.83010, 167.72700, 134.88541, -113.56027, -138.61951, 
+ | Execution: 13 Overall Best: -4.2031 -> -4.2031 GPU Time (s): 0.27997083 and HJ Time (s): 0.33041906
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 14 -- Promising region found with value: -1.335289.
+ | HJ uses 50016 / 50000 iterations [0.000000018492008962109129867926].
+ | 14 -- Conformation 
+ | -13.54263, -70.95356, 3.56980, 0.20178, -0.00925, -0.00128, -0.00033, -0.00023, -0.00046, 0.00037, 0.00017, 5.73815, -110.13109, -93.38000, -94.27959, -94.39326, -94.39848, -94.16165, -116.04391, -4.56300, -26.32351, 
+ | Execution: 14 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.29021173 and HJ Time (s): 0.32692385
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 15 -- Promising region found with value: -1.335291.
+ | HJ uses 50038 / 50000 iterations [0.000000065474770070138002493695].
+ | 15 -- Conformation 
+ | -13.54312, -70.95355, 3.56966, 0.20189, -0.00921, -0.00125, -0.00032, -0.00025, 0.00029, -0.00045, -0.00010, -5.73816, 110.13105, 93.38169, 94.30653, 94.45594, 94.54486, 94.83685, 72.95787, -175.56122, 162.67869, 
+ | Execution: 15 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.28921036 and HJ Time (s): 0.32678199
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 16 -- Promising region found with value: -1.335289.
+ | HJ uses 50003 / 50000 iterations [0.000000016642808065898217542878].
+ | 16 -- Conformation 
+ | -13.54252, -70.95357, 3.56979, 0.20175, -0.00914, -0.00128, -0.00032, -0.00021, -0.00046, 0.00038, 0.00016, -5.73815, 110.13108, 93.37991, 94.27910, 94.39232, 94.39701, 94.15968, 116.04181, 4.56090, 26.32139, 
+ | Execution: 16 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.29082318 and HJ Time (s): 0.32553697
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 17 -- Promising region found with value: -5.932594.
+ | HJ uses 50012 / 50000 iterations [0.000000047731107381130604228185].
+ | 17 -- Conformation 
+ | -13.61371, -67.42394, 6.04653, 4.69433, -5.56351, 0.18201, 16.55355, 9.77219, -46.61658, -11.55282, -4.19858, 1.70771, -116.04969, -83.43477, -123.00299, -91.03430, -4.82746, 81.59479, 153.13620, 32.55719, 82.26320, 
+ | Execution: 17 Overall Best: -5.9326 -> -5.9326 GPU Time (s): 0.27913318 and HJ Time (s): 0.33071899
+ +==============================================================+ 
+ | 18 -- Promising region found with value: -7.255666.
+ | HJ uses 50019 / 50000 iterations [0.000001716153733051175785489476].
+ | 18 -- Conformation 
+ | -12.80594, 35.05806, -30.22983, -15.44423, -2.40743, -9.91864, 63.73508, -22.32944, -11.29927, 34.67677, -7.30244, -10.47795, -143.18758, 164.31176, 91.48309, 14.99753, -35.66322, -170.50997, -127.31922, 128.88899, 162.87291, 
+ | Execution: 18 Overall Best: -7.2557 -> -7.2615 GPU Time (s): 0.27606833 and HJ Time (s): 0.33299303
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 19 -- Promising region found with value: -1.335290.
+ | HJ uses 50018 / 50000 iterations [0.000000038662196978715788167516].
+ | 19 -- Conformation 
+ | -13.54243, -70.95365, 3.57029, 0.20162, -0.00920, -0.00126, -0.00033, -0.00026, 0.00031, -0.00046, -0.00010, -5.73856, 110.13068, 93.37811, 94.29160, 94.42839, 94.50215, 94.78017, 72.89736, -175.62172, 162.61782, 
+ | Execution: 19 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.28848843 and HJ Time (s): 0.32734609
+ +==============================================================+ 
+ | 20 -- Promising region found with value: -7.076362.
+ | HJ uses 50033 / 50000 iterations [0.000003588051131109516567023205].
+ | 20 -- Conformation 
+ | -15.24890, 16.33962, 107.13405, -13.83112, 14.19100, 2.36348, 1.31570, 3.18691, 48.21090, 160.53257, -10.77760, -55.25000, 12.91218, 158.99064, -164.20254, 169.06790, 81.90705, -4.09322, 8.02631, -45.03180, 174.72182, 
+ | Execution: 20 Overall Best: -7.0764 -> -7.0788 GPU Time (s): 0.27546008 and HJ Time (s): 0.33272290
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 21 -- Promising region found with value: -1.335288.
+ | HJ uses 50023 / 50000 iterations [0.000000089814499410340197516101].
+ | 21 -- Conformation 
+ | -13.54252, -70.95360, 3.56999, 0.20184, -0.00916, -0.00125, -0.00035, -0.00019, -0.00045, 0.00037, 0.00017, 5.73830, -110.13096, -93.37823, -94.27212, -94.37948, -94.37711, -94.13327, -116.01361, -4.53269, -26.29302, 
+ | Execution: 21 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.28846078 and HJ Time (s): 0.32539701
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 22 -- Promising region found with value: -2.667971.
+ | HJ uses 50025 / 50000 iterations [0.000000038662196978715788167516].
+ | 22 -- Conformation 
+ | -11.45663, 10.15384, -22.87286, -15.51010, -5.88697, -3.70399, -0.47507, 0.00559, 0.00969, -0.00083, 0.00122, -41.92620, -147.26961, 168.41103, 146.44624, 172.22623, 171.89880, 171.53024, -166.61184, 81.90694, 103.66424, 
+ | Execution: 22 Overall Best: -2.6680 -> -2.6680 GPU Time (s): 0.28516351 and HJ Time (s): 0.32932305
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 23 -- Promising region found with value: -1.335287.
+ | HJ uses 50017 / 50000 iterations [0.000000169001825998257915577576].
+ | 23 -- Conformation 
+ | -13.54251, -70.95354, 3.56965, 0.20201, -0.00976, -0.00134, -0.00038, -0.00028, -0.00051, 0.00040, 0.00016, 5.73802, -110.13121, -93.38179, -94.28689, -94.40664, -94.41918, -94.18910, -116.07324, -4.59232, -26.35302, 
+ | Execution: 23 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.29036340 and HJ Time (s): 0.32720900
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 24 -- Promising region found with value: -5.868203.
+ | HJ uses 50027 / 50000 iterations [0.000000484692503355781480481530].
+ | 24 -- Conformation 
+ | -13.81462, -67.94233, 0.45247, 1.82521, -16.45183, 4.67605, 99.30397, -23.28254, 51.83195, -0.51637, 3.26623, -2.48276, -121.24775, -87.45988, -7.59532, 75.97625, 6.67474, -105.03778, -118.58288, 4.76740, -19.90614, 
+ | Execution: 24 Overall Best: -5.8682 -> -5.8682 GPU Time (s): 0.28537958 and HJ Time (s): 0.33310413
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 25 -- Promising region found with value: -5.737161.
+ | HJ uses 50001 / 50000 iterations [0.000000436223253020203343021288].
+ | 25 -- Conformation 
+ | -13.21713, 14.36355, -5.57677, -47.12369, -133.89112, -8.30163, -8.23444, -19.58179, -2.31688, 37.38693, 8.61963, -2.12043, 101.68601, 53.63666, 4.88723, -120.16467, -33.44983, 52.07085, 83.37590, -26.73020, -7.71044, 
+ | Execution: 25 Overall Best: -5.7372 -> -5.7372 GPU Time (s): 0.28212225 and HJ Time (s): 0.33300996
+ +==============================================================+ 
+ | 26 -- Promising region found with value: -5.570970.
+ | HJ uses 50005 / 50000 iterations [0.000000089814499410340197516101].
+ | 26 -- Conformation 
+ | -13.53719, -71.33534, 4.09426, 1.62144, 39.79042, -3.56342, 6.88758, 0.76422, 14.21344, -45.38678, -16.50092, -6.50243, 109.03316, 79.53868, 31.29512, 12.62967, 99.25132, -174.68603, -143.82711, -4.74757, 9.96100, 
+ | Execution: 26 Overall Best: -5.5710 -> -5.5710 GPU Time (s): 0.27460300 and HJ Time (s): 0.33069515
+ +==============================================================+ 
+ | 27 -- Promising region found with value: -7.190069.
+ | HJ uses 50025 / 50000 iterations [0.000004429692754456193198506469].
+ | 27 -- Conformation 
+ | -13.98711, -21.46690, 16.41265, -37.33295, 64.83496, -11.33916, -12.71505, -5.16817, -41.11362, 15.71557, -3.18837, -63.33733, -164.89433, 176.40849, -46.32891, -120.17841, 152.74993, 66.17681, 76.80839, -24.44153, 3.53439, 
+ | Execution: 27 Overall Best: -7.1901 -> -7.4672 GPU Time (s): 0.27675967 and HJ Time (s): 0.33365703
+ +==============================================================+ 
+ | 28 -- Promising region found with value: -7.752356.
+ | HJ uses 50035 / 50000 iterations [0.000003588051131109516567023205].
+ | 28 -- Conformation 
+ | -12.94537, 3.76020, -8.14969, -18.24379, -23.37507, 2.52965, -4.65311, 9.52261, 44.80489, -24.89274, -5.84393, 49.03692, 148.23158, -169.39011, -140.69265, -173.19600, 100.75097, 13.52760, -24.06735, -50.74164, 5.22294, 
+ | Execution: 28 Overall Best: -7.7524 -> -8.1588 GPU Time (s): 0.27586868 and HJ Time (s): 0.33238506
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 29 -- Promising region found with value: -5.322185.
+ | HJ uses 50003 / 50000 iterations [0.000000080833049469306173794024].
+ | 29 -- Conformation 
+ | -13.13810, -73.56490, 10.65207, -12.92015, -8.94190, -3.37514, -46.79036, 18.43527, 1.78785, 51.56510, 9.89327, 23.45138, -38.69842, -2.41686, 42.86776, 63.36363, -15.33961, -118.00655, -159.00370, -27.55663, -60.29728, 
+ | Execution: 29 Overall Best: -5.3222 -> -5.3222 GPU Time (s): 0.28540121 and HJ Time (s): 0.33232498
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+
+ 
+ 
+ THE ALGORITHM GET STUCKED, NEED RESET!
+ 
+ 
+ +==============================================================+ 
+ | 30 -- Promising region found with value: -1.335290.
+ | HJ uses 49834 / 50000 iterations [0.000000000095303657322459476629].
+ | 30 -- Conformation 
+ | -13.54250, -70.95354, 3.56957, 0.20206, -0.00898, -0.00129, -0.00037, -0.00025, 0.00029, -0.00047, -0.00012, -5.73806, 110.13113, 93.38318, 94.31230, 94.46642, 94.56100, 94.85820, 72.98065, -175.53844, 162.70162, 
+ | Execution: 30 Overall Best: -1.3353 -> -1.3353 GPU Time (s): 0.29293057 and HJ Time (s): 0.32779264
+ +==============================================================+ 
+ |                     EXPERIMENTS RESULTS                      | 
+ +==============================================================+ 
+ | Objective Function:
+ | 	 mean:         -3.85442852973937988281E+00
+ | 	 std:          +2.40328526496887207031E+00
+ | Execution Time (ms): 
+ | 	 mean:         +286.598
+ | 	 std:          +16.166
+ +==============================================================+

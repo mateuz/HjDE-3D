@@ -12,7 +12,7 @@
 
 int main(int argc, char * argv[]){
   srand(time(NULL));
-  uint n_runs, NP, n_evals;
+  uint n_runs, NP, n_evals, hjeval;
 
   std::string PDB;
 
@@ -23,6 +23,7 @@ int main(int argc, char * argv[]){
       ("pop_size,p", po::value<uint>(&NP)->default_value(20)       , "Population Size"      )
       ("protein,o", po::value<std::string>(&PDB)->default_value("1BXL"), "PDB ID"           )
       ("max_eval,e", po::value<uint>(&n_evals)->default_value(10e5), "Number of Function Evaluations")
+      ("hj_eval,j", po::value<uint>(&hjeval)->default_value(10e5), "Number of Function Evaluations (LS)")
       ("help,h", "Show help");
 
     po::options_description cmdline_options;
@@ -102,6 +103,19 @@ int main(int argc, char * argv[]){
   auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
   std::mt19937 rng(seed);
   std::uniform_int_distribution<int> random_i(0, NP-1);//[0, NP-1]
+  std::uniform_int_distribution<int> random_d(0, n_dim-1); // [0, D-1]
+  std::uniform_real_distribution<float> random(0, 1); // [0, 1)
+
+  int Pb, Lb, C;
+  if( n_dim < 45 ){
+    Pb = 50;
+    Lb = 10;
+    C  = 5;
+  } else {
+    Pb = 25;
+    Lb = 5;
+    C  = 10;
+  }
 
   int b_id;
   for( uint run = 1; run <= n_runs; run++ ){
@@ -119,8 +133,29 @@ int main(int argc, char * argv[]){
 
     //warm-up
     B->compute(p_og, p_fog);
-    int g = 0;
 
+    it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+    b_id = thrust::distance(d_fog.begin(), it_A);
+
+    float gb_e, lb_e;
+
+    gb_e = lb_e = static_cast<float>(*it_A);
+
+    //melhor encontrado em toda a execução
+    thrust::host_vector<float> gb(n_dim);
+
+    // melhor individuo na populaçao corrente
+    thrust::host_vector<double> lb(n_dim);
+
+    for( int nd = 0; nd < n_dim; nd++ ){
+      gb[nd] = static_cast<float>(d_og[(b_id*n_dim) + nd]);
+    }
+    lb = gb;
+
+    int g = 0;
+    int r_c = 0;
+    int local_reinit_counter = 0;
+    int global_reinit_counter = 0;
     cudaEventRecord(start);
     for( uint evals = 0; evals < n_evals; ){
       // first update the F and CR for the first trial generation
@@ -134,27 +169,92 @@ int main(int argc, char * argv[]){
       b_id = thrust::distance(d_fog.begin(), it_A);
 
       // gen new trial vectors using BEST/1/BIN strategy
-      jde->run_a(p_og, p_fog, p_ng, p_fng, b_id);
+      jde->run_a(p_og, p_ng, b_id);
 
-      // B->compute(p_ng, p_fng);
+      B->compute(p_ng, p_fng);
       evals += NP;
 
       // Look if the trials has a new best solution
       it_B = thrust::min_element(thrust::device, d_fng.begin(), d_fng.end());
 
-      if( static_cast<float>(*it_B) <= static_cast<float>(*it_A) ){
-        printf("%.5f < %.5f\n", static_cast<float>(*it_B), static_cast<float>(*it_A));
+      if(lb_e - static_cast<float>(*it_B) > 0 ){
+        lb_e = static_cast<float>(*it_B);
+        r_c = 0;
+      } else {
+        r_c += NP;
       }
-
-      // jde->run_b(p_og, p_ng, p_bg, p_fog, p_fng, b_id);
-      // B->compute(p_bg, p_fbg);
-      // evals += NP;
-
-      // selection between trial and best variations
-      // jde->selection_B(p_ng, p_bg, p_fng, p_fbg);
 
       // selection between current population and the new offsprings
       jde->selection_A(p_og, p_ng, p_fog, p_fng);
+
+      if( r_c >= (Pb*n_dim) ){
+        // printf(" RESET CHECK \n");
+        if( local_reinit_counter >= 5){
+
+          // update the global best
+          it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+          b_id = thrust::distance(d_fog.begin(), it_A);
+
+          if( static_cast<float>(*it_A) < gb_e ){
+            gb_e = static_cast<float>(*it_A);
+            for( int nd = 0; nd < n_dim; nd++ ){
+              gb[nd] = static_cast<float>(d_og[(b_id*n_dim) + nd]);
+            }
+          }
+          local_reinit_counter = 0;
+          global_reinit_counter++;
+
+          //printf(" | GLOBAL RESETING\n");
+          thrust::transform(isb, isb + (n_dim * NP), d_og.begin(), prg(x_min, x_max, rd()));
+          B->compute(p_og, p_fog);
+          it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+          b_id = thrust::distance(d_fog.begin(), it_A);
+
+          // new local best
+          lb_e = static_cast<float>(*it_A);
+
+          for( int nd = 0; nd < n_dim; nd++ ){
+            lb[nd] = static_cast<float>(d_og[(b_id*n_dim) + nd]);
+          }
+
+        } else {
+          //printf(" | LOCAL RESETING\n");
+
+          // update the global best
+          it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+          b_id = thrust::distance(d_fog.begin(), it_A);
+
+          if( static_cast<float>(*it_A) < gb_e ){
+            gb_e = static_cast<float>(*it_A);
+            for( int nd = 0; nd < n_dim; nd++ ){
+              gb[nd] = static_cast<float>(d_og[(b_id*n_dim) + nd]);
+            }
+          }
+
+          for( int i = 0; i < NP; i++ ){
+            for( int j = 0; j < n_dim; j++ ){
+              d_og[(i*n_dim) + j] = gb[j];
+            }
+            for( int j = 0; j < C; j++ ){
+              d_og[(i*n_dim) + random_d(rng)] = x_min + ((x_max - x_min) * random(rng));
+            }
+          }
+          r_c = 0;
+          local_reinit_counter++;
+
+          B->compute(p_og, p_fog);
+          it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
+          b_id = thrust::distance(d_fog.begin(), it_A);
+
+          // new local best
+          lb_e = static_cast<float>(*it_A);
+
+          for( int nd = 0; nd < n_dim; nd++ ){
+            lb[nd] = static_cast<float>(d_og[(b_id*n_dim) + nd]);
+          }
+        }
+
+      }
 
       g++;
     }
@@ -165,41 +265,50 @@ int main(int argc, char * argv[]){
     /* End a Run */
 
     it_A = thrust::min_element(thrust::device, d_fog.begin(), d_fog.end());
-    // int d = thrust::distance(d_fog.begin(), it);
+    b_id = thrust::distance(d_fog.begin(), it_A);
 
-    float * iter = thrust::min_element(thrust::device, p_fog, p_fog + NP);
-    int position = iter - p_fog;
 
-    printf(" +==============================================================+ \n");
-    // printf(" | Exploration phase finished.\n");
-    printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it_A));
-    // printf(" +==============================================================+ \n");
+    // printf(" %.5f vs %.5f\n",static_cast<float>(*it_A), gb_e );
 
-    // thrust::host_vector<double> H(n_dim);
-    //
-    // // //printf(" | R: ");
-    // for( int nd = 0; nd < n_dim; nd++ ){
-    //   //   //printf("teste[%d] = %.20f;\n", nd, a);
-    //   //   //printf("teste[%d] = %.30lf;\n", nd, static_cast<double>(a));
-    //   H[nd] = static_cast<double>(d_og[(position * n_dim) + nd]);
-    // }
-    //
-    // // // printf("\n");
+    float ww;
+
+    thrust::host_vector<double> H(n_dim);
+    if( static_cast<float>(*it_A) < gb_e ){
+      printf(" +==============================================================+ \n");
+      printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it_A));
+      ww = static_cast<float>(*it_A);
+      for( int nd = 0; nd < n_dim; nd++ ){
+        H[nd] = static_cast<double>(d_og[(b_id * n_dim) + nd]);
+      }
+    } else {
+      printf(" +==============================================================+ \n");
+      printf(" | %-2d -- Promising region found with value: %8f.\n", run, static_cast<float>(*it_A));
+      ww = gb_e;
+      for( int nd = 0; nd < n_dim; nd++ )
+        H[nd] = gb[nd];
+    }
+
+
     double tini, tend;
     tini = stime();
-    // hjres = hj->optimize(100000, H.data());
+    hjres = hj->optimize(hjeval, H.data());
     tend = stime();
-    //
-    // printf(" | %-2d -- Conformation \n | ", run);
-    // for( int nd = 0; nd < n_dim; nd++ ){
-    //   printf("%.30lf, ", (H[nd] * 180.0) / PI );
-    //   // printf("teste[%d] = %.30lf;\n", nd, H[nd]);
-    // }
-    // printf("\n");
 
-    printf(" | Execution: %-2d Overall Best: %+.4f -> %+.4lf GPU Time (s): %.8f and HJ Time (s): %.8f\n", run, static_cast<float>(*it_A), hjres, time/1000.0, tend-tini);
-    // printf(" | Execution: %-2d Overall Best: %+.4f GPU Time (ms): %.8f\n", run, static_cast<float>(*it), time);
+    printf(" | %-2d -- Conformation \n | ", run);
+    for( int nd = 0; nd < n_dim; nd++ ){
+      printf("%.5lf, ", (H[nd] * 180.0) / PI );
+    }
+    printf("\n");
 
+    if( hjres > 16.5264 ){
+      printf("\n \n \n \n \n \n ");
+    }
+    printf(" | Execution: %-2d Overall Best: %+.4f -> %+.4lf GPU Time (s): %.8f and HJ Time (s): %.8f\n", run, ww, hjres, time/1000.0, tend-tini);
+    int teste;
+    if( hjres < -16.5264 ){
+      printf("\n \n \n \n \n \n ");
+      scanf("%d", &teste);
+    }
     stats.push_back(std::make_pair(hjres, time));
     // stats.push_back(std::make_pair(static_cast<float>(*it), time));
 
