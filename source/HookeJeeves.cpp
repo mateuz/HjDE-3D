@@ -9,7 +9,7 @@ HookeJeeves::HookeJeeves(uint _nd, uint _pl, std::string _seq, double _rho, doub
   PL      = _pl;
   rho     = _rho;
   epsilon = _e;
-  AB_SQ = _seq;
+  AB_SQ   = _seq;
 
   printf(" | Number of Dimensions:        %d\n", nvars);
   printf(" | Protein Length:              %d\n", PL);
@@ -58,14 +58,10 @@ double HookeJeeves::evaluate(double * S){
 		points.push_back(std::make_tuple(_x, _y, _z));
 	}
 
-	// printf("Pontos: \n");
-	// for( uint16_t i = 0; i < PL; i++ ){
-	// 	printf("%.3f %.3f %.3f\n", std::get<0>(points[i]), std::get<1>(points[i]), std::get<2>(points[i]));
-	// }
-
 	double v1 = 0.0, v2 = 0.0;
 	double xi, xj, yi, yj, zi, zj, dx, dy, dz, D;
 	double c_ab;
+  
 	for( uint16_t i = 0; i < PL-2; i++ ){
 		v1 += 1 - cos(theta[i]);
 		for( uint16_t j = i + 2; j < PL; j++ ){
@@ -99,9 +95,8 @@ double HookeJeeves::evaluate(double * S){
 			v2 += ( 1 / pow(D, 12) - c_ab / pow(D, 6) );
 		}
 	}
-	// printf("v1: %.4lf v2: %.4lf\n", v1/4, 4*v2);
-	// printf("Final energy value: %.8lf\n", v1/4 + 4*v2);
-	return(v1/4 + 4*v2);
+	
+	return (v1/4 + 4*v2);
 }
 
 double HookeJeeves::best_nearby(double * point, double prevbest, uint * eval){
@@ -161,6 +156,7 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
   uint it;
   for( it = 0; it < nvars; it++ ){
     delta[it] = fabs(_startpt[it] * rho);
+
     if( delta[it] == 0.0 )
       delta[it] = rho;
   }
@@ -171,8 +167,6 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
 
 
   fbef = evaluate(newx);
-
-  //printf("Entrou com: %.10lf\n", fbef);
 
   fnew = fbef;
 
@@ -201,9 +195,11 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
         newx[i] = newx[i] + newx[i] - tmp;
 
         // check bounds
-        if( newx[i] <= -PI ){
+        if( newx[i] <= -PI )
+        {
           newx[i] += 2.0 * PI;
-        } else if(newx[i] > PI ){
+        } else if(newx[i] > PI )
+        {
           newx[i] += 2.0 * -PI;
         }
       }
@@ -232,11 +228,9 @@ double HookeJeeves::optimize(const uint n_evals, double * _startpt){
     }
   }
 
-  printf(" | HJ uses %d / %d iterations [%.30lf].\n", it, n_evals, step_length );
   // copy the improved result to startpt
   for( uint i = 0; i < nvars; i++ )
     _startpt[i] = xbef[i];
 
-  //printf("Saiu com: %.10lf\n", fbef);
   return fbef;
 }

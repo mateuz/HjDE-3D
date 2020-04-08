@@ -142,7 +142,7 @@ void jDE::run_b(float * og, float * ng, float * bg, float * fog, float * fng, ui
 __global__ void best_DE_02(float * og, float * ng, float * bnew, float * fog, float * fng, uint pbest){
   uint id_d, id_p, n_dim;
 
-  //id_g = threadIdx.x + blockDim.x * blockIdx.x;
+  // id_g = threadIdx.x + blockDim.x * blockIdx.x;
 
   id_d  = blockIdx.x;
 	id_p  = threadIdx.x;

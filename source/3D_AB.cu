@@ -173,9 +173,9 @@ __global__ void computeK_3DAB_P(float * x, float * f){
 
 __global__ void computeK_3DAB_S(float *x, float *f){
   uint id_p = threadIdx.x + (blockIdx.x * blockDim.x);
-  uint ps = params.ps;
+  uint ps   = params.ps;
   uint ndim = params.n_dim;
-  int N    = PL;
+  int N     = PL;
 
   if( id_p < ps ){
     uint THETA = id_p * ndim;
