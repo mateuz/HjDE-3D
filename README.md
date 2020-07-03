@@ -6,9 +6,9 @@
 
 ##### Boiani M., Dominico G., Stubs Parpinelli R. (2020) **A GPU-Based jDE Algorithm Applied to Continuous Unconstrained Optimization**. In: Abraham A., Cherukuri A., Melin P., Gandhi N. (eds) Intelligent Systems Design and Applications. ISDA 2018. Advances in Intelligent Systems and Computing, vol 940. Springer, Cham. doi: 10.1007/978-3-030-16657-1_85, [URL](https://link.springer.com/chapter/10.1007/978-3-030-16657-1_85)
 
-###### Protein Structure Prediction (PSP) problem is an open problem in bioinformatics and, as the problem scales, complexity and processing time increases. In this way, robust methods and massively parallel architectures are required. This repository provide a GPU-based hybrid algorithm, named cuHjDE, to handle the 3D-AB off-lattice PSP problem. The cuHjDE is composed of the jDE algorithm and the Hooke-Jeeves local search algorithm. An important feature present in the proposed method is the use of a crowding mechanism to avoid premature convergence promoting diversification in the search space.
+***
 
-
+###### Description: Protein Structure Prediction (PSP) problem is an open problem in bioinformatics and, as the problem scales, complexity and processing time increases. In this way, robust methods and massively parallel architectures are required. This repository provide a GPU-based hybrid algorithm, named cuHjDE, to handle the 3D-AB off-lattice PSP problem. The cuHjDE is composed of the jDE algorithm and the Hooke-Jeeves local search algorithm. An important feature present in the proposed method is the use of a crowding mechanism to avoid premature convergence promoting diversification in the search space.
 
 
 ***
