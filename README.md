@@ -1,4 +1,4 @@
-# A GPU-Based Hybrid jDE Algorithm Applied to the 3D-AB Protein Structure Prediction
+# HjDE-3D: GPU-based Hybrid jDE to the 3D-AB PSP
 
 #### If you use my approach or any adaptation of it, please refer to the following papers:
 
