@@ -20,6 +20,12 @@ Boiani M., Dominico G., Stubs Parpinelli R. (2020) **A GPU-Based jDE Algorithm A
 
 - ##### [Boost C++ Libraries - Program Options](https://www.boost.org/) (tested with 1.58.0)
 
+##### Architecture
+
+The Figure below depicts a flow chart of the GPU-based implementation.  In kernels’ boxes, the labels S1, S2, and S3 represent the kernel structure and letters R,SM, and C denote the use of random number generator, shared memory and constant memory, respectively
+ 
+<img src="https://github.com/mateuz/HjDE-3D/blob/master/assets/hjde3d-architecture.png" height="800" width="650">
+
 ##### Compile
 
 ```sh
