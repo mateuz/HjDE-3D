@@ -1,6 +1,15 @@
 # A GPU-Based Hybrid jDE Algorithm Applied to the 3D-AB Protein Structure Prediction
 
+#### Note: if you use my approach or any adaptation of it, please refer to the following papers: 
+
+Boiani M., Parpinelli R. S. **A GPU-based hybrid jDE algorithm applied to the 3D-AB protein structure prediction**. Swarm and Evolutionary Computation (2020): 100711. doi: 10.1016/j.swevo.2020.100711, [URL](https://www.sciencedirect.com/science/article/abs/pii/S2210650220303643)
+
+Boiani M., Dominico G., Stubs Parpinelli R. (2020) **A GPU-Based jDE Algorithm Applied to Continuous Unconstrained Optimization**. In: Abraham A., Cherukuri A., Melin P., Gandhi N. (eds) Intelligent Systems Design and Applications. ISDA 2018. Advances in Intelligent Systems and Computing, vol 940. Springer, Cham. doi: 10.1007/978-3-030-16657-1_85, [URL](https://link.springer.com/chapter/10.1007/978-3-030-16657-1_85)
+
 ###### Protein Structure Prediction (PSP) problem is an open problem in bioinformatics and, as the problem scales, complexity and processing time increases. In this way, robust methods and massively parallel architectures are required. This repository provide a GPU-based hybrid algorithm, named cuHjDE, to handle the 3D-AB off-lattice PSP problem. The cuHjDE is composed of the jDE algorithm and the Hooke-Jeeves local search algorithm. An important feature present in the proposed method is the use of a crowding mechanism to avoid premature convergence promoting diversification in the search space.
+
+
+
 
 ***
 ##### Requirements
