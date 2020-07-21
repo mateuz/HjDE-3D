@@ -4,7 +4,9 @@
 
 Boiani M., Parpinelli R. S. **A GPU-based hybrid jDE algorithm applied to the 3D-AB protein structure prediction**. Swarm and Evolutionary Computation (2020): 100711. doi: 10.1016/j.swevo.2020.100711, [URL](https://www.sciencedirect.com/science/article/abs/pii/S2210650220303643)
 
-Boiani M., Dominico G., Stubs Parpinelli R. (2020) **A GPU-Based jDE Algorithm Applied to Continuous Unconstrained Optimization**. In: Abraham A., Cherukuri A., Melin P., Gandhi N. (eds) Intelligent Systems Design and Applications. ISDA 2018. Advances in Intelligent Systems and Computing, vol 940. Springer, Cham. doi: 10.1007/978-3-030-16657-1_85, [URL](https://link.springer.com/chapter/10.1007/978-3-030-16657-1_85)
+Boiani M., Dominico G., Parpinelli R. S. (2019) **A GPU-Based Hybrid jDE Algorithm Applied to the 2D-AB Protein Structure Prediction Problem**. 2019 8th Brazilian Conference on Intelligent Systems (BRACIS), Salvador, Brazil, 2019, pp. 317-322, doi: 10.1109/BRACIS.2019.00063, [URL](https://ieeexplore.ieee.org/abstract/document/8924018)
+
+Boiani M., Dominico G., Parpinelli R. S. (2020) **A GPU-Based jDE Algorithm Applied to Continuous Unconstrained Optimization**. In: Abraham A., Cherukuri A., Melin P., Gandhi N. (eds) Intelligent Systems Design and Applications. ISDA 2018. Advances in Intelligent Systems and Computing, vol 940. Springer, Cham. doi: 10.1007/978-3-030-16657-1_85, [URL](https://link.springer.com/chapter/10.1007/978-3-030-16657-1_85)
 
 ***
 
